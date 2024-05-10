@@ -20,9 +20,20 @@ for file in $files; do
         echo "Backing up as ${homefilepath}.${timestamp}." 
         mv ${homefilepath} ${homefilepath}.${timestamp}
 
-        echo "Linking to local file to ${script_dir}/${localfilepath}."
-        echo "ln -fs ${script_dir}/home/${localfilepath} ${homefilepath}"
-        ln -fs ${script_dir}/home/${localfilepath} ${homefilepath}
+    # If does not exist, make directory(ies), then link
+    else
+        echo "${homefilepath} does not exist."
+
+        # Get the directory
+        dir_only="$(dirname "${homefilepath}")"
+        echo "Making directory ${dir_only}"
+        mkdir -p ${dir_only}
     fi
+
+    # Link the file
+    echo "Linking to local file to ${script_dir}/${localfilepath}."
+    #echo "ln -fs ${script_dir}/home/${localfilepath} ${homefilepath}"
+    ln -fs ${script_dir}/home/${localfilepath} ${homefilepath}
+    echo ""
 
 done
