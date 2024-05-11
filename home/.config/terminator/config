@@ -22,36 +22,12 @@
       fullscreen = True
       size = 1366, 768
       title = jlburky@hercules: ~/Git/linux-environment-main
-      last_active_term = 8b3d14c4-498d-4993-bcc6-fb4ba3243c33
+      last_active_term = a93ef1dc-f3ff-4209-87fd-48794062a463
       last_active_window = True
-    [[[child1]]]
-      type = HPaned
+    [[[terminal1]]]
+      type = Terminal
       parent = child0
       order = 0
-      position = 648
-      ratio = 0.4761204996326231
-    [[[child2]]]
-      type = VPaned
-      parent = child1
-      order = 0
-      position = 382
-      ratio = 0.5006553079947575
-    [[[terminal3]]]
-      type = Terminal
-      parent = child2
-      order = 0
-      profile = default
-      uuid = 8b3d14c4-498d-4993-bcc6-fb4ba3243c33
-    [[[terminal4]]]
-      type = Terminal
-      parent = child2
-      order = 1
-      profile = default
-      uuid = 9b1073d0-848a-45f8-aa0d-be37b8376194
-    [[[terminal5]]]
-      type = Terminal
-      parent = child1
-      order = 1
       profile = default
       uuid = a93ef1dc-f3ff-4209-87fd-48794062a463
 [plugins]

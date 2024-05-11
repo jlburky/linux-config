@@ -5,12 +5,12 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 
 ## Installation
 
-The `install_links.sh` script maps all the files under the `home/` directory to
+The `link_home.sh` script maps all the files under the `home/` directory to
 the user's Linux `$HOME` directory as links. If a file or link already exists,
 it will back it up with a timestamp extension (.YYYYMMDDHHMM) before creating
 the new link. To use, from the location of this script, execute:
 ```
-$ ./install_links.sh
+$ ./link_home.sh
 ```
 
 ## Files
@@ -25,3 +25,15 @@ $ ./install_links.sh
 * `.config/qtile/qtile-background.jpg` - background image used in my Qtile
   configuration.
 * `.config/terminator/config` - configuration the Terminator terminal emulator.
+* `urxvt-vim-scrollback` - folder containing the open source plug-in for urxvt
+  allowing scrollback using Vim movements. To use, make sure the following line
+  in `Xdefaults` has the correct path.
+    ```
+    URxvt*perl-lib: /path/to/this/urxvt-vim-scrollback
+    ```
+
+## To Do
+* Add xsession files.
+* Add option to ignore files and folders in link_home.sh.
+* Maybe add custom links such as xession to link_home.sh.
+* Add print function showing any executed commands in link_home.sh.
