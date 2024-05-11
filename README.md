@@ -13,3 +13,15 @@ the new link. To use, from the location of this script, execute:
 $ ./install_links.sh
 ```
 
+## Files
+* `.bashrc` - my bash configurations. 
+* `.config/nvim/init.vim` - initialization file to configure Nvim to use
+  Doc Mike's vimfiles.
+* `.vimrc` - Vim initialization file configured to use runtime Vim.
+* `Xdefaults` - my configurations for the urxvt terminal.
+* `.config/qtile/config.py` - my custom Qtile configuration. 
+* `.config/qtile/config.default.py` - default Qtile configuration primarily
+  provided for reference.
+* `.config/qtile/qtile-background.jpg` - background image used in my Qtile
+  configuration.
+* `.config/terminator/config` - configuration the Terminator terminal emulator.
