@@ -1,11 +1,6 @@
 #!/bin/bash
-# link_home.sh - maps all the files under the `home/` directory to the user's
-# Linux `$HOME` directory as links. If a file or link already exists, it will
-# back it up with a timestamp extension (.YYYYMMDDHHMM) before creating the new
-# link. To use, from the location of this script, execute:
-#
-# $ ./link_home.sh
- 
+# custom_installs.sh - any custom installations should be added to this script. 
+
 # Orient to location of this script using this crazy, well-known command
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
@@ -15,6 +10,8 @@ timestamp=$(date +"%Y%m%d%H%M")
 # Find all the regular files under the local 'home' directory
 files=`find ./home -type f`
 
+# Update the .Xdefaults using a template file to point to the location of this
+# installed repo
 for file in $files; do 
 
     # Cut the './home' from the file path
