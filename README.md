@@ -31,7 +31,12 @@ $ ./link_home.sh
   configuration.
 * `home/.config/terminator/config` - configuration the Terminator terminal emulator.
 * `home/.vimrc` - Vim initialization file configured to use runtime Vim.
-* `home/.Xdefaults` - my configurations for the urxvt terminal.
+* `home/.Xdefaults` - my configurations for the urxvt terminal generated from
+  Xdefaults.template by the `custom_installs.sh`.
+* `home/.xsession.qtile` - configuration for Qtile to start under Remote Desktop
+  (RDP) when this file is `$HOME/.xsession`.
+* `home/.xsession.cinnamon` - configuration for Cinnamon to start under Remote 
+Desktop (RDP) when this file is `$HOME/.xsession`.
 * `urxvt-vim-scrollback` - folder containing the open source plug-in for urxvt
   allowing scrollback using Vim movements. To use, make sure the following line
   in `Xdefaults` has the correct path.
@@ -42,6 +47,5 @@ $ ./link_home.sh
   generic location of `urxvt-vim-scrollback`.
 
 ## To Do
-* Add xsession files and installation.
 * Add print function showing any executed commands in link_home.sh.
 * Add scrollback for Terminator.
