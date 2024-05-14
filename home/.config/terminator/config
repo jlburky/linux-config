@@ -10,7 +10,12 @@
   layout_launcher = None
 [profiles]
   [[default]]
+    background_color = "#0e0d0d"
     cursor_color = "#aaaaaa"
+    font = Ubuntu Mono Bold 11
+    foreground_color = "#ffffff"
+    use_system_font = False
+    copy_on_selection = True
 [layouts]
   [[default]]
     [[[child0]]]

@@ -42,8 +42,6 @@ $ ./link_home.sh
   generic location of `urxvt-vim-scrollback`.
 
 ## To Do
-* Add sed command to update Xdefaults.
-* Add xsession files.
-* Maybe add custom links such as xession to link_home.sh.
+* Add xsession files and installation.
 * Add print function showing any executed commands in link_home.sh.
 * Add scrollback for Terminator.
