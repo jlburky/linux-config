@@ -7,37 +7,15 @@ script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 # Get a timestamp for replacing existing files
 timestamp=$(date +"%Y%m%d%H%M")
 
-# Find all the regular files under the local 'home' directory
-files=`find ./home -type f`
+#---------- Configure and Install .Xdefaults ----------
+# Update the .Xdefaults to point to this urxvt-vim-scrollback location using
+# a template
+template=${script_dir}/Xdefaults.template
 
-# Update the .Xdefaults using a template file to point to the location of this
-# installed repo
-for file in $files; do 
+# Set the path to the urxvt-vim-scrollback
+folder_path=${script_dir}
 
-    # Cut the './home' from the file path
-    localfilepath=`echo $file | cut -d'/' -f3-`
-
-    # Check if file already exists, backup, then link
-    homefilepath=$HOME/${localfilepath}
-    if [ -f ${homefilepath} ]; then
-        echo "${homefilepath} already exists."
-        echo "Backing up as ${homefilepath}.${timestamp}." 
-        mv ${homefilepath} ${homefilepath}.${timestamp}
-
-    # If does not exist, make directory(ies), then link
-    else
-        echo "${homefilepath} does not exist."
-
-        # Get the directory
-        dir_only="$(dirname "${homefilepath}")"
-        echo "Making directory ${dir_only}"
-        mkdir -p ${dir_only}
-    fi
-
-    # Link the file
-    echo "Linking to local file to ${script_dir}/${localfilepath}."
-    #echo "ln -fs ${script_dir}/home/${localfilepath} ${homefilepath}"
-    ln -fs ${script_dir}/home/${localfilepath} ${homefilepath}
-    echo ""
-
-done
+# Search and replace the pattern in the template "/path/to" with user's path;
+# note the trick, that since our variable uses "/" we use the @ delimiter since
+# sed can use any character as a delimiter 
+sed -e "s@/path/to@${folder_path}@g" "${template}" > ./home/.Xdefaults
