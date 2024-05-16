@@ -54,9 +54,8 @@ Desktop (RDP) when this file is `$HOME/.xsession`.
     ```
     URxvt*perl-lib: /path/to/this/urxvt-vim-scrollback
     ```
-* `Xdefaults.template` - pretty much the same as the `.Xdefaults`; with a
-  generic location of `urxvt-vim-scrollback`.
+* `Xdefaults.template` - used to create the `.Xdefaults`; with a generic
+  location of `urxvt-vim-scrollback`.
 
 ## To Do
-* Add print function showing any executed commands in link_home.sh.
 * Add gitconfig.
