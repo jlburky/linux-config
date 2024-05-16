@@ -5,10 +5,14 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 
 ## Pre-reqs
 
+* Cinnamon Desktop Environment
+* git
 * Neovim
 * Qtile
+* rxvt-unicode
 * Terminator
 * Vim with Doc Mike's vimfiles
+* Python `logging_tree` via pip
 
 ## Installation
 
@@ -55,3 +59,4 @@ Desktop (RDP) when this file is `$HOME/.xsession`.
 
 ## To Do
 * Add print function showing any executed commands in link_home.sh.
+* Add gitconfig.
