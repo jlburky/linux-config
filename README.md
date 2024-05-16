@@ -3,6 +3,13 @@
 Custom files used to configure a user's Linux environment. The folders and files
 under the `home/` directory equivalently map to a users `$HOME` directory.
 
+## Pre-reqs
+
+* Neovim
+* Qtile
+* Terminator
+* Vim with Doc Mike's vimfiles
+
 ## Installation
 
 The `custom_installs.sh` can be used to implement any customizations outside of
@@ -48,4 +55,3 @@ Desktop (RDP) when this file is `$HOME/.xsession`.
 
 ## To Do
 * Add print function showing any executed commands in link_home.sh.
-* Add scrollback for Terminator.
