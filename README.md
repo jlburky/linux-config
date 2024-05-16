@@ -1,4 +1,4 @@
-# linux-home
+# linux-config
 
 Custom files used to configure a user's Linux environment. The folders and files
 under the `home/` directory equivalently map to a users `$HOME` directory.
