@@ -16,7 +16,8 @@ Maps all the files under the this repo's home/ directory to the user's Linux
 with a timestamp extension (.YYYYMMDDHHMM) before creating the new link.
 
 OPTIONS:
--h, --help          This message.
+-h, --help              This message.
+-rb. --remove-backups   Remove backup files (requires confirmation).
 
 EOF
 }
@@ -57,6 +58,29 @@ for file in $files; do
 done
 }
 
+remove_backups()
+{
+# Find all the regular files udner the local 'home' directory
+files=`find ./home -type f`
+
+    # Cut the './home' from the file path
+    localfile=`echo $file | cut -d'/' -f3-`
+
+    # Find any backups
+    if compgen -G "${HOME}/${localfile}.*" > /dev/null; then
+        backups=`ls -1 ${HOME}/${localfile}.*`
+        for backup in $backups; do
+            read -p "Remove backup: ${backup}? (y/N)" confirm
+            if [[ ${confirm} == [yY]  ]]; then
+                echo "Removing backup: ${backup} ."
+                rm -f ${backup}
+            else
+               echo "Skipping backup: ${backup} ." 
+            fi
+        done
+    fi
+}
+
 # Check for max num of options
 maxnumargs=1
 if [ "$#" -gt $maxnumargs ]; then
@@ -75,6 +99,10 @@ timestamp=$(date +"%Y%m%d%H%M")
 for opt in "$@"; do
     case ${opt} in
         -h|--help)
+            usage
+            exit 0
+            ;;
+        -rb|--remove-backups)
             usage
             exit 0
             ;;
