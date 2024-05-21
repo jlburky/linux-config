@@ -17,7 +17,7 @@ with a timestamp extension (.YYYYMMDDHHMM) before creating the new link.
 
 OPTIONS:
 -h, --help              This message.
--rb. --remove-backups   Remove backup files (requires confirmation).
+-rb, --remove-backups   Remove backup files (requires confirmation).
 
 EOF
 }
@@ -63,22 +63,24 @@ remove_backups()
 # Find all the regular files udner the local 'home' directory
 files=`find ./home -type f`
 
-    # Cut the './home' from the file path
-    localfile=`echo $file | cut -d'/' -f3-`
+    for file in $files; do 
+        # Cut the './home' from the file path
+        localfile=`echo $file | cut -d'/' -f3-`
 
-    # Find any backups
-    if compgen -G "${HOME}/${localfile}.*" > /dev/null; then
-        backups=`ls -1 ${HOME}/${localfile}.*`
-        for backup in $backups; do
-            read -p "Remove backup: ${backup}? (y/N)" confirm
-            if [[ ${confirm} == [yY]  ]]; then
-                echo "Removing backup: ${backup} ."
-                rm -f ${backup}
-            else
-               echo "Skipping backup: ${backup} ." 
-            fi
-        done
-    fi
+        # Find any backups
+        if compgen -G "${HOME}/${localfile}.*" > /dev/null; then
+            backups=`ls -1 ${HOME}/${localfile}.*`
+            for backup in $backups; do
+                read -p "Remove backup: ${backup}? (y/N)" confirm
+                if [[ ${confirm} == [yY]  ]]; then
+                    echo "Done!"
+                    rm -f ${backup}
+                else
+                   echo "Skipping backup: ${backup} ." 
+                fi
+            done
+        fi
+    done
 }
 
 # Check for max num of options
@@ -103,7 +105,7 @@ for opt in "$@"; do
             exit 0
             ;;
         -rb|--remove-backups)
-            usage
+            remove_backups
             exit 0
             ;;
         *)
