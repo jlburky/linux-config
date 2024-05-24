@@ -7,12 +7,13 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 
 * Cinnamon Desktop Environment
 * git
+* dmenu
 * Neovim
 * Qtile (see more below)
 * rxvt-unicode
-* Terminator
+* terminator
 * Vim with Doc Mike's vimfiles
-* Python `logging_tree` via pip
+* Python module `logging_tree`
 
 ## Installation
 
@@ -29,6 +30,12 @@ it will back it up with a timestamp extension (.YYYYMMDDHHMM) before creating
 the new link. To use, from the location of this script, execute:
 ```
 $ ./link_home.sh
+```
+
+This script can also remove any backups that were created. It prompts the user
+if they want to remove each backup. Execute:
+```
+$ ./link_home.sh --remove-backups
 ```
 
 ## Files
