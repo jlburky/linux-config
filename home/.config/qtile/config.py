@@ -5,12 +5,13 @@ import subprocess
 import shlex
 import socket
 import logging
-import logging_tree
+#import logging_tree
 
 from pprint import pformat as pf
 from libqtile.config import Key, Screen, Group, Drag, Click, Match
 from libqtile.lazy import lazy
 from libqtile import layout, bar, widget, hook
+from typing import List
 
 from libqtile.log_utils import logger as qtileLogger
 qtileLogger.setLevel(logging.INFO)
@@ -263,8 +264,8 @@ def startup():
     run('feh --bg-scale {}'.format(osp.join(HOME, '.config/qtile/qtile-background.jpg')))
 
     # Write the logging tree to a file.
-    with open(".config/qtile/logging_tree.txt", 'w') as f:
-        f.write(logging_tree.format.build_description())
+    #with open(".config/qtile/logging_tree.txt", 'w') as f:
+    #    f.write(logging_tree.format.build_description())
 
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
