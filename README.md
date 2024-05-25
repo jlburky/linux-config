@@ -80,7 +80,7 @@ details, for getting Qtile v0.23.0 working.
 * Python module `cairocffi` 1.6.0
 * Python module `mypy` 1.10.0
 
-## Python 3.9 Installation on Ubuntu 20.04
+### Python 3.9 Installation on Ubuntu 20.04
 I started by following the instructions from this site:
 * https://linuxize.com/post/how-to-install-python-3-9-on-ubuntu-20-04/
 
@@ -98,7 +98,7 @@ $ sudo python3 -m pip install --upgrade pip
 $ sudo apt remove python3-pip
 ```
 
-## Qtile Installation
+### Qtile Installation
 With all your non-Python dependent packages installed, install all Python
 packages via `pip` in the order below. Qtile has had issue with the order of
 installation because packages build on other packages.

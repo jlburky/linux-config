@@ -36,16 +36,8 @@ sed -e "s@/path/to@${folder_path}@g" "${template}" > ./home/.Xdefaults
 #---------- Install .xsession Link To .xsession.qtile ----------
 install_xsession()
 {
-# Check if file already exists, backup, then link
-homefilepath=$HOME/.xsession
-if [ -f ${homefilepath} ]; then
-    echo "${homefilepath} already exists."
-    echo "Backing up as ${homefilepath}.${timestamp}." 
-    mv ${homefilepath} ${homefilepath}.${timestamp}
-fi
-
 echo -e "Creating $HOME/.xsession link to local file, ${script_dir}/home/.xsession.qtile .\n"
-ln -fs ${script_dir}/home/.xsession.qtile ${homefilepath}
+ln -fs ${script_dir}/xsession.qtile $HOME/.xsession
 }
 
 # Globals
