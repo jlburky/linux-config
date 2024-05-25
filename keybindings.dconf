@@ -1,0 +1,10 @@
+[/]
+custom-list=['custom0', '__dummy__']
+
+[custom-keybindings/custom0]
+binding=['<Alt>Return']
+command='/usr/bin/terminator'
+name='Terminator'
+
+[wm]
+close=['<Alt>q']

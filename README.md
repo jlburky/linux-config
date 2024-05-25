@@ -38,6 +38,19 @@ if they want to remove each backup. Execute:
 $ ./link_home.sh --remove-backups
 ```
 
+### Cinnamon Keybindings Installation
+
+Custom Cinnamon desktop keybindings were captured using the command:
+```
+$ dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dconf
+```
+
+They should be installed using the command below. 
+TODO: Add the loading to the `custom_installs.sh`.
+```
+$ dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dconf
+```
+
 ## Files
 * `home/.bashrc` - my bash configurations. 
 * `home/.config/nvim/init.vim` - initialization file to configure Nvim to use
@@ -50,11 +63,10 @@ $ ./link_home.sh --remove-backups
 * `home/.config/terminator/config` - configuration the Terminator terminal emulator.
 * `home/.vimrc` - Vim initialization file configured to use runtime Vim.
 * `home/.Xdefaults` - my configurations for the urxvt terminal generated from
-  Xdefaults.template by the `custom_installs.sh`.
-* `home/.xsession.qtile` - configuration for Qtile to start under Remote Desktop
-  (RDP) when this file is `$HOME/.xsession`.
-* `home/.xsession.cinnamon` - configuration for Cinnamon to start under Remote 
-Desktop (RDP) when this file is `$HOME/.xsession`.
+  Xdefaults.template by the `custom_installs.sh`. Desktop (RDP) when this file
+  is `$HOME/.xsession`.
+* `keybindings.dconf` - the custom keybindings used in the Cinnamon desktop
+  environment.
 * `urxvt-vim-scrollback` - folder containing the open source plug-in for urxvt
   allowing scrollback using Vim movements. To use, make sure the following line
   in `Xdefaults` has the correct path.
@@ -63,6 +75,9 @@ Desktop (RDP) when this file is `$HOME/.xsession`.
     ```
 * `Xdefaults.template` - used to create the `.Xdefaults`; with a generic
   location of `urxvt-vim-scrollback`.
+* `xsession.qtile` - configuration for Qtile to start under Remote Desktop
+  (RDP) when this file is `$HOME/.xsession`.
+* `xsession.cinnamon` - configuration for Cinnamon to start under Remote 
 
 ## Qtile Notes Version 0.23.0, Released 2023-09-24
 While awesome, Qtile is a real pain to install correctly. Once you get a version
