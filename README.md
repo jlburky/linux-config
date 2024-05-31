@@ -82,3 +82,4 @@ $ dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dconf
 
 ## To Do
 * Add gitconfig.
+* Move .xsession.qtile to home/.xsession.
