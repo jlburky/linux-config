@@ -85,3 +85,4 @@ $ dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dconf
 * Move .xsession.qtile to home/.xsession.
 * Update qtile to version 0.24.0.
 * Update qtile config.py to support two monitors by repeating Screen object.
+* pip freeze the Qtile venv 
