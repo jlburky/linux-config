@@ -33,8 +33,10 @@ Then I installed and updated `pip` to the latest.
 ```
 
 Create the venv glue entry script that will be called by your `.xsession` file.
+```
 $ touch ~/local/qtile-env/qtile-venv-entry
 $ chmod 755 ~/local/qtile-env/qtile-venv-entry
+```
 
 And enter the following into `qtile-venv-entry`.
 ```
@@ -48,11 +50,11 @@ packages via `pip` in the order below. Qtile has had issue with the order of
 installation because packages build on other packages.
 
 ```bash
-$ sudo pip install xcffib==1.5.0
-$ sudo pip install cffi==1.16.0
-$ sudo pip install cairocffi==1.7.0
-$ sudo pip install mypy==1.10.0
-$ sudo pip install qtile==0.24.0
+(venv)$ pip install xcffib==1.5.0
+(venv)$ pip install cffi==1.16.0
+(venv)$ pip install cairocffi==1.7.0
+(venv)$ pip install mypy==1.10.0
+(venv)$ pip install qtile==0.24.0
 ```
 
 Now check for issues. Start with a simple call to the help menu.
