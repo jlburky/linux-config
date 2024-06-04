@@ -51,6 +51,9 @@ TODO: Add the loading to the `custom_installs.sh`.
 $ dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dconf
 ```
 
+## Directories
+* `home` - place files in here that can be directly linked to the user's home directory.
+  
 ## Files
 * `home/.bashrc` - my bash configurations. 
 * `home/.config/nvim/init.vim` - initialization file to configure Nvim to use
