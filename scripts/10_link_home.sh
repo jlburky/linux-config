@@ -25,6 +25,7 @@ EOF
 link_files()
 {
 # Find all the regular files under the local 'home' directory
+cd ${top_dir}
 files=`find ./home -type f`
 
 for file in $files; do 
@@ -50,9 +51,9 @@ for file in $files; do
     fi
 
     # Link the file
-    echo "Linking to local file to ${script_dir}/${localfilepath}."
-    #echo "ln -fs ${script_dir}/home/${localfilepath} ${homefilepath}"
-    ln -fs ${script_dir}/home/${localfilepath} ${homefilepath}
+    echo "Linking to local file to ${top_dir}/${localfilepath}."
+    #echo "ln -fs ${top_dir}/home/${localfilepath} ${homefilepath}"
+    ln -fs ${top_dir}/home/${localfilepath} ${homefilepath}
     echo ""
 
 done
@@ -61,6 +62,7 @@ done
 remove_backups()
 {
 # Find all the regular files udner the local 'home' directory
+cd ${top_dir}
 files=`find ./home -type f`
 
     for file in $files; do 
@@ -93,6 +95,9 @@ fi
 # Globals
 # Orient to location of this script using this crazy, well-known command
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+# Set the location to the top of this repo
+top_dir=`dirname ${script_dir}`
 
 # Get a timestamp for replacing existing files
 timestamp=$(date +"%Y%m%d%H%M")

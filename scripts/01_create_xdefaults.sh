@@ -1,13 +1,12 @@
 #!/bin/bash
-# custom_installs.sh - any custom installations should be added to this script. 
+# create_xdefaults.sh - creates the .Xdefaults file and places it in the this
+# repos home directory for linking
 usage()
 {
 cat << EOF
 Usage: $0 [options]
 
-Customs installations for this repo including:
-- Configuring and installing .Xdefaults for the urxvt terminal.
-- Setting the .xsession for Qtile.
+Configuring and installing .Xdefaults for the urxvt terminal.
 
 OPTIONS:
 -h, --help          This message.
@@ -16,36 +15,26 @@ EOF
 }
 
 #---------- Configure and Install .Xdefaults ----------
-setup_xdefaults()
+create_xdefaults()
 {
 # Update the .Xdefaults to point to this urxvt-vim-scrollback location using
 # a template
-template=${script_dir}/Xdefaults.template
-
-# Set the path to the urxvt-vim-scrollback
-folder_path=${script_dir}
+template=${top_dir}/Xdefaults.template
 
 # Search and replace the pattern in the template "/path/to" with user's path;
 # note the trick, that since our variable uses "/" we use the @ delimiter since
 # sed can use any character as a delimiter 
-echo -e "Configuring .Xdefaults to point to ${folder_path}/urxvt-vim-scrollback."
-echo -e "Creating .Xdefaults at ${script_dir}/home/.Xdefaults .\n"
-sed -e "s@/path/to@${folder_path}@g" "${template}" > ./home/.Xdefaults
-}
-
-#---------- Install .xsession Link To .xsession.qtile ----------
-install_xsession()
-{
-echo -e "Creating $HOME/.xsession link to local file, ${script_dir}/home/.xsession.qtile .\n"
-ln -fs ${script_dir}/xsession.qtile $HOME/.xsession
+echo -e "Configuring .Xdefaults to point to ${top_dir}/urxvt-vim-scrollback."
+echo -e "Creating .Xdefaults at ${top_dir}/home/.Xdefaults .\n"
+sed -e "s@/path/to@${top_dir}@g" "${template}" > ${top_dir}/home/.Xdefaults
 }
 
 # Globals
 # Orient to location of this script using this crazy, well-known command
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-# Get a timestamp for replacing existing files
-timestamp=$(date +"%Y%m%d%H%M")
+# Set the location to the top of this repo
+top_dir=`dirname ${script_dir}`
 
 # Check for max num of options
 maxnumargs=1
@@ -69,5 +58,4 @@ for opt in "$@"; do
 done
 
 # Execute all customizations
-setup_xdefaults
-install_xsession
+create_xdefaults

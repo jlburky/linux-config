@@ -52,7 +52,8 @@ $ dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dconf
 ```
 
 ## Directories
-* `home` - place files in here that can be directly linked to the user's home directory.
+* `home` - files to be directly linked to the user's home directory.
+* `scripts` - scripts to automate the environment.
   
 ## Files
 * `home/.bashrc` - my bash configurations. 
@@ -66,9 +67,6 @@ $ dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dconf
 * `home/.config/terminator/config` - configuration the Terminator terminal
   emulator.
 * `home/.vimrc` - Vim initialization file configured to use runtime Vim.
-* `home/.Xdefaults` - my configurations for the urxvt terminal generated from
-  Xdefaults.template by the `custom_installs.sh`. Desktop (RDP) when this file
-  is `$HOME/.xsession`.
 * `keybindings.dconf` - the custom keybindings used in the Cinnamon desktop
   environment.
 * `urxvt-vim-scrollback` - folder containing the open source plug-in for urxvt
@@ -77,7 +75,7 @@ $ dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dconf
     ```
     URxvt*perl-lib: /path/to/this/urxvt-vim-scrollback
     ```
-* `Xdefaults.template` - used to create the `.Xdefaults`; with a generic
+* `Xdefaults.template` - used to create the `.Xdefaults` setting the path to the
   location of `urxvt-vim-scrollback`.
 * `xsession.qtile` - configuration for Qtile to start under Remote Desktop
   (RDP) when this file is `$HOME/.xsession`.
