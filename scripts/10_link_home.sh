@@ -22,6 +22,8 @@ OPTIONS:
 EOF
 }
 
+source globals.sh
+
 link_files()
 {
 # Find all the regular files under the local 'home' directory
@@ -92,16 +94,6 @@ if [ "$#" -gt $maxnumargs ]; then
     exit 1
 fi
 
-# Globals
-# Orient to location of this script using this crazy, well-known command
-script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-
-# Set the location to the top of this repo
-top_dir=`dirname ${script_dir}`
-
-# Get a timestamp for replacing existing files
-timestamp=$(date +"%Y%m%d%H%M")
-
 # Gather options
 for opt in "$@"; do
     case ${opt} in
@@ -122,3 +114,4 @@ done
 
 # Execute the linking
 link_files
+exit 0

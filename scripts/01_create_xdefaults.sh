@@ -6,7 +6,8 @@ usage()
 cat << EOF
 Usage: $0 [options]
 
-Configuring and installing .Xdefaults for the urxvt terminal.
+Creates the .Xdefaults file that configures the urxvt terminal and places it in 
+the this repos home directory for linking.
 
 OPTIONS:
 -h, --help          This message.
@@ -14,12 +15,14 @@ OPTIONS:
 EOF
 }
 
+source globals.sh
+
 #---------- Configure and Install .Xdefaults ----------
 create_xdefaults()
 {
 # Update the .Xdefaults to point to this urxvt-vim-scrollback location using
 # a template
-template=${top_dir}/Xdefaults.template
+template=${top_dir}/configurations/Xdefaults.template
 
 # Search and replace the pattern in the template "/path/to" with user's path;
 # note the trick, that since our variable uses "/" we use the @ delimiter since
@@ -28,13 +31,6 @@ echo -e "Configuring .Xdefaults to point to ${top_dir}/urxvt-vim-scrollback."
 echo -e "Creating .Xdefaults at ${top_dir}/home/.Xdefaults .\n"
 sed -e "s@/path/to@${top_dir}@g" "${template}" > ${top_dir}/home/.Xdefaults
 }
-
-# Globals
-# Orient to location of this script using this crazy, well-known command
-script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-
-# Set the location to the top of this repo
-top_dir=`dirname ${script_dir}`
 
 # Check for max num of options
 maxnumargs=1
@@ -59,3 +55,4 @@ done
 
 # Execute all customizations
 create_xdefaults
+exit 0
