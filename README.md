@@ -17,48 +17,18 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 
 ## Installation
 
-The `custom_installs.sh` can be used to implement any customizations outside of
-linking the home directory. This script currently should be run before
-`link_home.sh`. To use, from the location of this script, execute: 
-```
-$ ./custom_installs.sh
-```
-
-The `link_home.sh` script maps all the files under the `home/` directory to
-the user's Linux `$HOME` directory as links. If a file or link already exists,
-it will back it up with a timestamp extension (.YYYYMMDDHHMM) before creating
-the new link. To use, from the location of this script, execute:
-```
-$ ./link_home.sh
-```
-
-This script can also remove any backups that were created. It prompts the user
-if they want to remove each backup. Execute:
-```
-$ ./link_home.sh --remove-backups
-```
-
-### Cinnamon Keybindings Installation
-
-Custom Cinnamon desktop keybindings were captured using the command:
-```
-$ dconf dump /org/cinnamon/desktop/keybindings/ > keybindings.dconf
-```
-
-They should be installed using the command below. 
-TODO: Add the loading to the `custom_installs.sh`.
-```
-$ dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dconf
-```
+In the `scripts` directory, are short scripts for each installation. Run the
+script with the `--help` option to get a description and usage.
 
 ## Directories
 * `home` - files to be directly linked to the user's home directory.
-* `scripts` - scripts to automate the environment; each script is prepended
-  numerically to provide a run order and must be run from this directory.
 * `configuraions` - files and directories that don't map directly to a user's
   `$HOME` directory.
+* `repos` - stores external cloned (not stored in this repo) or forked (store in this repo) repos.
+* `scripts` - scripts to automate the environment; each script is prepended
+  numerically to provide a run order and must be run from this directory.
   
-## Files
+## Configuration Descriptions
 * `home/.bashrc` - my bash configurations. 
 * `home/.config/nvim/init.vim` - initialization file to configure Nvim to use
   Doc Mike's vimfiles.
@@ -72,21 +42,20 @@ $ dconf load /org/cinnamon/desktop/keybindings/ < keybindings.dconf
 * `home/xsession.qtile` - configuration for Qtile to start under Remote Desktop
   (RDP) when this file is `$HOME/.xsession`.
 * `home/.vimrc` - Vim initialization file configured to use runtime Vim.
-* `keybindings.dconf` - the custom keybindings used in the Cinnamon desktop
-  environment.
-* `urxvt-vim-scrollback` - folder containing the open source plug-in for urxvt
-  allowing scrollback using Vim movements. To use, make sure the following line
-  in `Xdefaults` has the correct path.
     ```
     URxvt*perl-lib: /path/to/this/urxvt-vim-scrollback
     ```
+* `configurations/keybindings.dconf` - the custom keybindings used in the Cinnamon desktop environment.
 * `configurations/Xdefaults.template` - used to create the `.Xdefaults` setting
   the path to the location of `urxvt-vim-scrollback`.
 * `configurations/xession.cinnamon` - configuration for Cinnamon to start using RDP.
+* `repos/urxvt-vim-scrollback` - folder containing the open source plug-in for urxvt
+  allowing scrollback using Vim movements. To use, make sure the following line
+  in `Xdefaults` has the correct path.
 
 ## To Do
 * Add gitconfig.
-* Move .xsession.qtile to home/.xsession.
 * Update qtile to version 0.24.0.
 * Update qtile config.py to support two monitors by repeating Screen object.
 * pip freeze the Qtile venv 
+* Script to install keybindings

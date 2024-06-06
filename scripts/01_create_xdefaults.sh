@@ -27,9 +27,9 @@ template=${top_dir}/configurations/Xdefaults.template
 # Search and replace the pattern in the template "/path/to" with user's path;
 # note the trick, that since our variable uses "/" we use the @ delimiter since
 # sed can use any character as a delimiter 
-echo -e "Configuring .Xdefaults to point to ${top_dir}/urxvt-vim-scrollback."
+echo -e "Configuring .Xdefaults to point to ${top_dir}/repos/urxvt-vim-scrollback."
 echo -e "Creating .Xdefaults at ${top_dir}/home/.Xdefaults .\n"
-sed -e "s@/path/to@${top_dir}@g" "${template}" > ${top_dir}/home/.Xdefaults
+sed -e "s@/path/to@${top_dir}/repos@g" "${template}" > ${top_dir}/home/.Xdefaults
 }
 
 # Check for max num of options
