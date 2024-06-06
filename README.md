@@ -24,9 +24,12 @@ script with the `--help` option to get a description and usage.
 * `home` - files to be directly linked to the user's home directory.
 * `configuraions` - files and directories that don't map directly to a user's
   `$HOME` directory.
-* `repos` - stores external cloned (not stored in this repo) or forked (store in this repo) repos.
 * `scripts` - scripts to automate the environment; each script is prepended
   numerically to provide a run order and must be run from this directory.
+* `repos` - stores external cloned (not stored in this repo) or forked (store in
+  this repo) repos.
+* `venvs` - space to create any virtual environments to support Linux
+  configuration.
   
 ## Configuration Descriptions
 * `home/.bashrc` - my bash configurations. 
@@ -58,4 +61,3 @@ script with the `--help` option to get a description and usage.
 * Update qtile to version 0.24.0.
 * Update qtile config.py to support two monitors by repeating Screen object.
 * pip freeze the Qtile venv 
-* Script to install keybindings

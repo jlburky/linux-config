@@ -24,7 +24,7 @@ First install create the virtual environment
 ```
 $ mkdir -p ~/local/
 $ python3.10 -m venv ~/local/qtile-venv/
-$ source ~/local/qtile-env/bin/activate
+$ source ~/local/qtile-venv/bin/activate
 ```
 
 Then I installed and updated `pip` to the latest.
@@ -34,8 +34,8 @@ Then I installed and updated `pip` to the latest.
 
 Create the venv glue entry script that will be called by your `.xsession` file.
 ```
-$ touch ~/local/qtile-env/qtile-venv-entry
-$ chmod 755 ~/local/qtile-env/qtile-venv-entry
+$ touch ~/local/qtile-venv/qtile-venv-entry
+$ chmod 755 ~/local/qtile-venv/qtile-venv-entry
 ```
 
 And enter the following into `qtile-venv-entry`.
