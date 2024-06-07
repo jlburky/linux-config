@@ -2,4 +2,4 @@
 
 xsetroot -solid black
 
-exec qtile --log-level DEBUG start
+exec qtile-venv-entry --log-level DEBUG start

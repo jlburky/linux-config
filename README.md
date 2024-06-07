@@ -13,7 +13,6 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 * rxvt-unicode
 * terminator
 * Vim with Doc Mike's vimfiles
-* Python module `logging_tree`
 
 ## Installation
 
@@ -48,16 +47,18 @@ script with the `--help` option to get a description and usage.
     ```
     URxvt*perl-lib: /path/to/this/urxvt-vim-scrollback
     ```
-* `configurations/keybindings.dconf` - the custom keybindings used in the Cinnamon desktop environment.
+* `configurations/keybindings.dconf` - the custom keybindings used in the
+  Cinnamon desktop environment.
 * `configurations/Xdefaults.template` - used to create the `.Xdefaults` setting
   the path to the location of `urxvt-vim-scrollback`.
-* `configurations/xession.cinnamon` - configuration for Cinnamon to start using RDP.
-* `repos/urxvt-vim-scrollback` - folder containing the open source plug-in for urxvt
-  allowing scrollback using Vim movements. To use, make sure the following line
-  in `Xdefaults` has the correct path.
+* `configurations/xession.cinnamon` - configuration for Cinnamon to start using
+  RDP.
+* `repos/urxvt-vim-scrollback` - folder containing the open source plug-in for
+  urxvt allowing scrollback using Vim movements. To use, make sure the following
+  line in `Xdefaults` has the correct path.
+* `venvs/qtile-venv` - reserved to create the Qtile virtual environment using
+  the `requirements-frozen.txt` in that directory.
 
 ## To Do
 * Add gitconfig.
-* Update qtile to version 0.24.0.
 * Update qtile config.py to support two monitors by repeating Screen object.
-* pip freeze the Qtile venv 
