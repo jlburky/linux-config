@@ -54,7 +54,6 @@ for file in $files; do
 
     # Link the file
     echo "Linking to local file to ${top_dir}/${localfilepath}."
-    #echo "ln -fs ${top_dir}/home/${localfilepath} ${homefilepath}"
     ln -fs ${top_dir}/home/${localfilepath} ${homefilepath}
     echo ""
 

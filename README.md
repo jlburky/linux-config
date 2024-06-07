@@ -5,14 +5,14 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 
 ## Pre-reqs
 
-* Cinnamon Desktop Environment
 * git
 * dmenu
-* Neovim
-* Qtile ([notes here](QTILE_NOTES.md))
 * rxvt-unicode
 * terminator
+* Qtile ([notes here with more pre-reqs](QTILE.md))
+* Cinnamon Desktop Environment (if preferred to Qtile)
 * Vim with Doc Mike's vimfiles
+* Neovim
 
 ## Installation
 
@@ -31,12 +31,10 @@ script with the `--help` option to get a description and usage.
   configuration.
   
 ## Configuration Descriptions
-* `home/.bashrc` - my bash configurations. 
+* `home/.bashrc` - user's bash configurations. 
 * `home/.config/nvim/init.vim` - initialization file to configure Nvim to use
   Doc Mike's vimfiles.
 * `home/.config/qtile/config.py` - my custom Qtile configuration. 
-* `.config/qtile/config.default.py` - default Qtile configuration primarily
-  provided for reference.
 * `home/.config/qtile/qtile-background.jpg` - background image used in my Qtile
   configuration.
 * `home/.config/terminator/config` - configuration the Terminator terminal
@@ -49,6 +47,8 @@ script with the `--help` option to get a description and usage.
     ```
 * `configurations/keybindings.dconf` - the custom keybindings used in the
   Cinnamon desktop environment.
+* `configurations/qtile-default-config.py` - default Qtile configuration primarily
+  provided for reference.
 * `configurations/Xdefaults.template` - used to create the `.Xdefaults` setting
   the path to the location of `urxvt-vim-scrollback`.
 * `configurations/xession.cinnamon` - configuration for Cinnamon to start using
@@ -62,3 +62,6 @@ script with the `--help` option to get a description and usage.
 ## To Do
 * Add gitconfig.
 * Update qtile config.py to support two monitors by repeating Screen object.
+* Add ansicolors to scripting.
+* Script install of vimfiles/vimuserlocalfiles.
+* Script install of neovim additions.

@@ -44,10 +44,10 @@ source ~/local/qtile-venv/bin/activate
 python ~/local/qtile-venv/bin/qtile $*
 ```
 
-## Qtile Installation
+## Qtile Manual Installation
 With all your non-Python dependent packages installed, install all Python
-packages via `pip` in the order below. Qtile has had issue with the order of
-installation because packages build on other packages.
+packages via `pip` in the order below. This installation has been automated
+in the `install_qtile.sh` script.
 
 ```bash
 (venv)$ pip install xcffib==1.5.0
