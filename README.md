@@ -41,8 +41,8 @@ script with the `--help` option to get a description and usage.
   configuration.
 * `home/.config/terminator/config` - configuration the Terminator terminal
   emulator.
-* `home/xsession.qtile` - configuration for Qtile to start under Remote Desktop
-  (RDP) when this file is `$HOME/.xsession`.
+* `home/.xsession` - default configuration for Qtile to start under Remote Desktop
+  (RDP).
 * `home/.vimrc` - Vim initialization file configured to use runtime Vim.
     ```
     URxvt*perl-lib: /path/to/this/urxvt-vim-scrollback
