@@ -61,7 +61,6 @@ script with the `--help` option to get a description and usage.
 
 ## To Do
 * Add gitconfig.
-* Make vim default for git commits.
 * Update qtile config.py to support two monitors by repeating Screen object.
 * Add ansicolors to scripting.
 * Script install of neovim additions.

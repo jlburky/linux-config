@@ -1,0 +1,5 @@
+[user]
+	name = John Burky
+	email = jlburky@noemail.com
+[core]
+	editor = vim
