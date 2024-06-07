@@ -20,7 +20,7 @@ source globals.sh
 
 # Set default repos 
 vimfiles_repo=git@github.com:drmikehenry/vimfiles.git
-vimuserlocalfiles=git@github:jlburky/vimuserlocalfiles.git
+vimuserlocalfiles=git@github.com:jlburky/vimuserlocalfiles.git
 
 # Provide option to use alternate repos for vimfile and vimuserlocalfiles
 #set_repos()
@@ -29,14 +29,18 @@ configure_vimfiles()
 {
 
 # Clone vimfiles repo under the linux-config
-# TODO: should we check if directory already exists?
-#echo -e "Cloning ${vimfiles_repo} to ${top_dir}/repos/vimfiles"
-#git clone ${vimfiles_repo} ${top_dir}/repos/vimfiles
+vimfiles_path="${top_dir}/repos/vimfiles"
+if [ -d ${vimfiles_path} ]; then
+    echo -e "${vimfiles_path} already exists, skipping clone.\n"
+else
+    echo -e "Cloning ${vimfiles_repo} to ${vimfiles_path}.\n"
+    git clone ${vimfiles_repo} ${vimfiles_path}
+fi
+echo ""
 
 # Link user's $HOME/.vim to this repo; check if file already exists, backup, 
 # then link
 dotvimfile="$HOME/.vim"
-echo "${dotvimfile}"
 if [ -d ${dotvimfile} ]; then
     echo "${dotvimfile} already exists."
     echo "Backing up as ${dotvimfile}.${timestamp}." 
@@ -44,24 +48,26 @@ if [ -d ${dotvimfile} ]; then
 fi
 
 # Link to the repo
-echo "Linking to user's .vim file to ${top_dir}/repos/vimfiles"
+echo -e "Linking to user's .vim file to ${top_dir}/repos/vimfile.\n"
 ln -fs ${top_dir}/repos/vimfiles $HOME/.vim
-echo ""
 
 # Message to user to ensure runtime in .vimrc
-echo -e "Ensure your ~/.vimrc declares 'runtime vimrc'."
+echo -e "Ensure your ~/.vimrc declares 'runtime vimrc'.\n"
 }
 
-
-# Start all over and remove existing virtual env
-remove_venv()
+configure_vimuserlocalfiles()
 {
-echo -e "Removing virtual environment located at:\n${venv_path}"
-rm -rf ${venv_path}/bin
-rm -rf ${venv_path}/include
-rm -rf ${venv_path}/lib
-rm -rf ${venv_path}/lib64
-rm -rf ${venv_path}/pyvenv.cfg
+# Clone vimfiles repo under the linux-config
+vimuserlocalfiles_path="${top_dir}/repos/vimuserlocalfiles"
+if [ -d ${vimuserlocalfiles_path} ]; then
+    echo -e "${vimuserlocalfiles_path} already exists, skipping clone.\n"
+else
+    echo -e "Cloning ${vimfiles_repo} to ${vimuserlocalfiles_path}.\n"
+    git clone ${vimfiles_repo} ${vimuserlocalfiles_path}
+fi
+
+echo -e "Exporting VIMUSERLOCALFILES to point to this repo. You may want to tidy up."
+echo "export VIMUSERLOCALFILES=\"${vimuserlocalfiles_path}\"" >> ~/.bashrc
 }
 
 # Check for max num of options
@@ -86,4 +92,5 @@ for opt in "$@"; do
 done
 
 configure_vimfiles
+configure_vimuserlocalfiles
 exit 0

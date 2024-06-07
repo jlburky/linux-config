@@ -1,3 +1,4 @@
 *.swp
 repos/vimfiles/
+repos/vimuserlocalfiles/
 home/.Xdefaults
