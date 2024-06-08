@@ -55,7 +55,7 @@ for opt in "$@"; do
             ;;
         *)
             echo "Invalid option."
-            exit 0
+            exit 1
             ;;
      esac
 done

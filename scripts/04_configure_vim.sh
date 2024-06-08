@@ -37,7 +37,6 @@ echo ""
 
 configure_vimfiles()
 {
-
 # Clone vimfiles repo under the linux-config
 vimfiles_path="${top_dir}/repos/vimfiles"
 if [ -d ${vimfiles_path} ]; then
@@ -97,7 +96,7 @@ for opt in "$@"; do
             ;;
         *)
             echo "Invalid option."
-            exit 0
+            exit 1
             ;;
      esac
 done
