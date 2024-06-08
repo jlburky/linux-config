@@ -9,6 +9,7 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 * dmenu
 * git
 * nvim (Neovim)
+* nvim dependencies
 * rxvt-unicode
 * terminator
 * Python 3.10 (for Qtile specifically)
@@ -18,7 +19,7 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 
 In the `scripts` directory, are short scripts for each installation. Run the
 script with the `--help` option to get a description and usage. Notes
-specifically on the installation of Qtile [are here](QTILE.md)
+specifically on the installation of Qtile [are here.](QTILE.md)
 
 ## Directories
 
@@ -26,7 +27,7 @@ specifically on the installation of Qtile [are here](QTILE.md)
 * `configuraions` - files and directories that don't map directly to a user's
   `$HOME` directory.
 * `scripts` - scripts to automate the environment; each script is prepended
-  numerically to provide a run order and must be run from this directory.
+  numerically to provide a run order guidance. All scripts must be run from this directory.
 * `repos` - stores external cloned (not stored in this repo) or forked (store in
   this repo) repos.
 * `venvs` - space to create any virtual environments to support Linux

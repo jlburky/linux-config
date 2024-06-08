@@ -27,10 +27,10 @@ vimuserlocalfiles_repo=git@github.com:jlburky/vimuserlocalfiles.git
 # Provide option to use alternate repos for vimfile and vimuserlocalfiles
 set_repos()
 {
-read -p "Enter new vimfile repo location: " newrepo 
+read -rp "Enter new vimfile repo location: " newrepo 
 vimfiles_repo=${newrepo}
 
-read -p "Enter new vimuserlocalfile repo location: " newrepo 
+read -rp "Enter new vimuserlocalfile repo location: " newrepo 
 vimuserlocalfiles_repo=${newrepo}
 echo ""
 }
@@ -39,11 +39,11 @@ configure_vimfiles()
 {
 # Clone vimfiles repo under the linux-config
 vimfiles_path="${top_dir}/repos/vimfiles"
-if [ -d ${vimfiles_path} ]; then
+if [ -d "${vimfiles_path}" ]; then
     echo -e "${vimfiles_path} already exists, skipping clone.\n"
 else
     echo -e "Cloning ${vimfiles_repo} to ${vimfiles_path}.\n"
-    git clone ${vimfiles_repo} ${vimfiles_path}
+    git clone "${vimfiles_repo}" "${vimfiles_path}"
 fi
 
 # Link user's $HOME/.vim to this repo; check if file already exists, backup, 
