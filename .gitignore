@@ -1,4 +1,5 @@
 *.swp
 repos/vimfiles/
 repos/vimuserlocalfiles/
+repos/lua-language-server/
 home/.Xdefaults
