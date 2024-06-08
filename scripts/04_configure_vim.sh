@@ -12,6 +12,8 @@ Configures vim using Doc Mikes vimfiles and a user's vimuserlocal files.
 
 OPTIONS:
 -h, --help          This message.
+-sr, --set-repos    Interactively change the location of the Git repo for 
+                    vimfile and vimuserlocalfiles before configuration.
 
 EOF
 }
@@ -20,10 +22,18 @@ source globals.sh
 
 # Set default repos 
 vimfiles_repo=git@github.com:drmikehenry/vimfiles.git
-vimuserlocalfiles=git@github.com:jlburky/vimuserlocalfiles.git
+vimuserlocalfiles_repo=git@github.com:jlburky/vimuserlocalfiles.git
 
 # Provide option to use alternate repos for vimfile and vimuserlocalfiles
-#set_repos()
+set_repos()
+{
+read -p "Enter new vimfile repo location: " newrepo 
+vimfiles_repo=${newrepo}
+
+read -p "Enter new vimuserlocalfile repo location: " newrepo 
+vimuserlocalfiles_repo=${newrepo}
+echo ""
+}
 
 configure_vimfiles()
 {
@@ -36,14 +46,12 @@ else
     echo -e "Cloning ${vimfiles_repo} to ${vimfiles_path}.\n"
     git clone ${vimfiles_repo} ${vimfiles_path}
 fi
-echo ""
 
 # Link user's $HOME/.vim to this repo; check if file already exists, backup, 
 # then link
 dotvimfile="$HOME/.vim"
 if [ -d ${dotvimfile} ]; then
-    echo "${dotvimfile} already exists."
-    echo "Backing up as ${dotvimfile}.${timestamp}." 
+    echo -e "${dotvimfile} already exists. Backing up as ${dotvimfile}.${timestamp}." 
     mv ${dotvimfile} ${dotvimfile}.${timestamp}
 fi
 
@@ -62,8 +70,8 @@ vimuserlocalfiles_path="${top_dir}/repos/vimuserlocalfiles"
 if [ -d ${vimuserlocalfiles_path} ]; then
     echo -e "${vimuserlocalfiles_path} already exists, skipping clone.\n"
 else
-    echo -e "Cloning ${vimfiles_repo} to ${vimuserlocalfiles_path}.\n"
-    git clone ${vimfiles_repo} ${vimuserlocalfiles_path}
+    echo -e "Cloning ${vimuserlocalfiles_repo} to ${vimuserlocalfiles_path}.\n"
+    git clone ${vimuserlocalfiles_repo} ${vimuserlocalfiles_path}
 fi
 
 echo -e "Exporting VIMUSERLOCALFILES to point to this repo. You may want to tidy up."
@@ -83,6 +91,9 @@ for opt in "$@"; do
         -h|--help)
             usage
             exit 0
+            ;;
+        -sr|--set-repos)
+            set_repos
             ;;
         *)
             echo "Invalid option."
