@@ -5,21 +5,23 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 
 ## Pre-reqs
 
-* git
+* Cinnamon Desktop Environment (if preferred to Qtile)
 * dmenu
+* git
+* nvim (Neovim)
 * rxvt-unicode
 * terminator
-* Qtile ([notes here with more pre-reqs](QTILE.md))
-* Cinnamon Desktop Environment (if preferred to Qtile)
-* Vim with Doc Mike's vimfiles
-* Neovim
+* Python 3.10 (for Qtile specifically)
+* vim
 
 ## Installation
 
 In the `scripts` directory, are short scripts for each installation. Run the
-script with the `--help` option to get a description and usage.
+script with the `--help` option to get a description and usage. Notes
+specifically on the installation of Qtile [are here](QTILE.md)
 
 ## Directories
+
 * `home` - files to be directly linked to the user's home directory.
 * `configuraions` - files and directories that don't map directly to a user's
   `$HOME` directory.
@@ -31,6 +33,7 @@ script with the `--help` option to get a description and usage.
   configuration.
   
 ## Configuration Descriptions
+
 * `home/.bashrc` - user's bash configurations. 
 * `home/.config/nvim/init.vim` - initialization file to configure Nvim to use
   Doc Mike's vimfiles.
@@ -60,6 +63,7 @@ script with the `--help` option to get a description and usage.
   the `requirements-frozen.txt` in that directory.
 
 ## To Do
+
 * Add gitconfig.
 * Update qtile config.py to support two monitors by repeating Screen object.
 * Add ansicolors to scripting.
