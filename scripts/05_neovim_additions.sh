@@ -32,7 +32,6 @@ lua_language_server_repo=${newrepo}
 echo ""
 }
 
-# TODO: options to set repos
 install_python_neovim()
 {
 echo -e "Installing neovim package to native Python 3, locally.\n"  
@@ -93,4 +92,5 @@ done
 install_python_neovim
 install_python_language_server
 install_lua_language_server
+echo -e "Be sure to install your plugins the first time you run Neovim by executing:\n:PlugInstall --sync"
 exit 0
