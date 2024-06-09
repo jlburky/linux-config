@@ -1,5 +1,6 @@
 *.swp
+home/.Xdefaults
 repos/vimfiles/
 repos/vimuserlocalfiles/
 repos/lua-language-server/
-home/.Xdefaults
+venvs/qtile-venv/*

@@ -49,7 +49,7 @@ cat > ${venv_path}/qtile-venv-entry <<EOF
 # This glue shell is only needed when you want to run Qtile within a virtualenv
 
 source ${venv_path}/bin/activate
-python ${venv_path}/bin/qtile $*
+python ${venv_path}/bin/qtile \$*
 EOF
 
 chmod 755 ${venv_path}/qtile-venv-entry 
