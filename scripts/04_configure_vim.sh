@@ -21,8 +21,8 @@ EOF
 source globals.sh
 
 # Set default repos 
-vimfiles_repo=git@github.com:drmikehenry/vimfiles.git
-vimuserlocalfiles_repo=git@github.com:jlburky/vimuserlocalfiles.git
+vimfiles_repo=https://github.com/drmikehenry/vimfiles.git
+vimuserlocalfiles_repo=https://github.com/jlburky/vimuserlocalfiles.git
 
 # Provide option to use alternate repos for vimfile and vimuserlocalfiles
 set_repos()

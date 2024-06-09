@@ -120,4 +120,3 @@ if ! shopt -oq posix; then
 fi
 
 alias luamake="/home/jlburky/Git/linux-config/repos/lua-language-server/3rd/luamake/luamake"
-
