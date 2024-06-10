@@ -10,7 +10,7 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 * git
 * nvim (Neovim)
 * nvim dependencies
-* rxvt-unicode
+* `rxvt-unicode-256color`
 * terminator
 * Python 3.10 (for Qtile specifically)
 * vim
