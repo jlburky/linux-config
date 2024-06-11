@@ -118,5 +118,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-alias luamake="/home/jlburky/Git/linux-config/repos/lua-language-server/3rd/luamake/luamake"
