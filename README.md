@@ -10,6 +10,7 @@ under the `home/` directory equivalently map to a users `$HOME` directory.
 * git
 * nvim (Neovim)
 * nvim dependencies
+* `rxvt-unicode`
 * `rxvt-unicode-256color`
 * terminator
 * Python 3.10 (for Qtile specifically)
@@ -69,3 +70,4 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 * Update qtile config.py to support two monitors by repeating Screen object.
 * Add ansicolors to scripting.
 * Script install of neovim additions.
+* Add path to VIMUSERLOCALFILES to a file `.vimuserlocalfilesrc`

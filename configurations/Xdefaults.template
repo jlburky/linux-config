@@ -35,7 +35,7 @@ URxvt*color14: #8abeb7
 URxvt*color7: #707880
 Urxvt*color15: #c5c8c6
 
-URxvt*termName: rxvt
+URxvt*termName: rxvt-unicode
 URxvt*scrollBar: false
 URxvt*saveLines: 200000
 Xft*hinting: full
