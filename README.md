@@ -70,3 +70,4 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 * Update qtile config.py to support two monitors by repeating Screen object.
 * Add ansicolors to scripting.
 * Add path to VIMUSERLOCALFILES to a file `.vimuserlocalfilesrc`
+* Interactively offer to the the repos in the install scripts.
