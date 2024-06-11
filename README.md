@@ -69,5 +69,4 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 * Add gitconfig.
 * Update qtile config.py to support two monitors by repeating Screen object.
 * Add ansicolors to scripting.
-* Script install of neovim additions.
 * Add path to VIMUSERLOCALFILES to a file `.vimuserlocalfilesrc`
