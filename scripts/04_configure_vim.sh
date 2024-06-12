@@ -73,8 +73,8 @@ else
     git clone ${vimuserlocalfiles_repo} ${vimuserlocalfiles_path}
 fi
 
-echo -e "Exporting VIMUSERLOCALFILES to point to this repo. You may want to tidy up."
-echo "export VIMUSERLOCALFILES=\"${vimuserlocalfiles_path}\"" >> ~/.bashrc
+echo -e "Exporting VIMUSERLOCALFILES to this repo in your $top_dir/home/.bashrc_local."
+echo "export VIMUSERLOCALFILES=\"${vimuserlocalfiles_path}\"" >> "$top_dir/home/.bashrc_local"
 }
 
 # Check for max num of options

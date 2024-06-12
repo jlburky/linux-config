@@ -96,10 +96,6 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# My custom exports
-export VIMUSERLOCALFILES="$HOME/Git/linux-config/repos/vimuserlocalfiles"
-export PATH="$PATH:."
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -118,4 +114,15 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+fi
+
+# some small modifications.
+# Everything before this line, was provided by the Ubuntu 20.04; there may be
+
+# My custom exports common across all dev environements
+export PATH="$PATH:."
+
+# My customizations local to this dev environment 
+if [ -f ~/.bashrc_local ]; then
+    . ~/.bashrc_local
 fi

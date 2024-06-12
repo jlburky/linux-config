@@ -36,7 +36,9 @@ specifically on the installation of Qtile [are here.](QTILE.md)
   
 ## Configuration Descriptions
 
-* `home/.bashrc` - user's bash configurations. 
+* `home/.bashrc` - user's bash configurations common across all dev environments. 
+* `home/.bashrc_local` - empty file (a placeholder) for user's bash
+  configurations local to a particular dev environment. 
 * `home/.config/nvim/init.vim` - initialization file to configure Nvim to use
   Doc Mike's vimfiles.
 * `home/.config/qtile/config.py` - my custom Qtile configuration. 
@@ -71,3 +73,4 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 * Add ansicolors to scripting.
 * Add path to VIMUSERLOCALFILES to a file `.vimuserlocalfilesrc`
 * Interactively offer to the the repos in the install scripts.
+* Move the luamake alias automatically to .bashrc_local
