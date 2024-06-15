@@ -70,7 +70,5 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 
 * Add gitconfig.
 * Update qtile config.py to support two monitors by repeating Screen object.
-* Add ansicolors to scripting.
-* Add path to VIMUSERLOCALFILES to a file `.vimuserlocalfilesrc`
 * Interactively offer to the the repos in the install scripts.
 * Move the luamake alias automatically to .bashrc_local
