@@ -122,6 +122,9 @@ fi
 # My custom exports common across all dev environements
 export PATH="$PATH:."
 
+# My custom aliases common across all dev environements
+alias wss="cd $HOME/Workspaces"
+
 # My customizations local to this dev environment 
 if [ -f ~/.bashrc_local ]; then
     . ~/.bashrc_local
