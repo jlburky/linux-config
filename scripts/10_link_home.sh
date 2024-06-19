@@ -27,8 +27,8 @@ source globals.sh
 link_files()
 {
 # Find all the regular files under the local 'home' directory
-cd ${top_dir}
-files=`find ./home -type f`
+cd "${top_dir}" || exit 1
+files=$(find ./home -type f)
 
 for file in $files; do 
 
@@ -38,25 +38,26 @@ for file in $files; do
     # Check if file already exists, backup, then link
     homefilepath=$HOME/${localfilepath}
     if [ -f ${homefilepath} ]; then
-        echo "${homefilepath} already exists."
-        echo "Backing up as ${homefilepath}.${timestamp}." 
+        print_info "${homefilepath} already exists."
+        print_info "Backing up as ${homefilepath}.${timestamp}." 
+        print_command "${homefilepath} ${homefilepath}.${timestamp}"
         mv ${homefilepath} ${homefilepath}.${timestamp}
 
     # If does not exist, make directory(ies), then link
     else
-        echo "${homefilepath} does not exist."
+        print_info "${homefilepath} does not exist."
 
         # Get the directory
         dir_only="$(dirname "${homefilepath}")"
-        echo "Making directory ${dir_only}"
+        print_info "Making directory ${dir_only}"
+        print_command "mkdir -p ${dir_only}"
         mkdir -p ${dir_only}
     fi
 
     # Link the file
-    echo "Linking to local file to ${top_dir}/${localfilepath}."
+    print_info "Linking to local file to ${top_dir}/${localfilepath}."
+    print_command "ln -fs ${top_dir}/home/${localfilepath} ${homefilepath}"
     ln -fs ${top_dir}/home/${localfilepath} ${homefilepath}
-    echo ""
-
 done
 }
 
@@ -76,10 +77,11 @@ files=`find ./home -type f`
             for backup in $backups; do
                 read -p "Remove backup: ${backup}? (y/N)" confirm
                 if [[ ${confirm} == [yY]  ]]; then
-                    echo "Done!"
+                    print_info "Done!"
+                    print_command "rm -f ${backup}"
                     rm -f ${backup}
                 else
-                   echo "Skipping backup: ${backup} ." 
+                   print_info "Skipping backup: ${backup} ." 
                 fi
             done
         fi

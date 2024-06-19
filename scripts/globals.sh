@@ -21,7 +21,7 @@ CYN='\e[36m'
 NC='\033[0m'  # no color
 
 print_info() {
-    echo -e ${GRN}${1}${NC}
+    echo -e ${1}
 }
 
 print_warning() {
@@ -32,7 +32,6 @@ print_error() {
     echo -e ${RED}${1}${NC}
 }
 
-print_exec_command() {
+print_command() {
     echo -e "${CYN}+ ${1}${NC}"
-    ${1}
 }
