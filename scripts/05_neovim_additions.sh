@@ -28,41 +28,48 @@ set_repos()
 {
 read -rp "Enter new lua-language-server repo location: " newrepo 
 lua_language_server_repo=${newrepo}
-
-echo ""
 }
 
 install_python_neovim()
 {
-echo -e "Installing neovim package to native Python 3, locally.\n"  
-python3 -m pip install neovim
+print_info "Installing neovim package to native Python 3, locally."  
+command="python3 -m pip install neovim"
+print_exec_command "$command"
 }
 
 install_python_language_server()
 {
-echo -e "Installing python-language-server package to native Python 3, locally.\n"  
-python3 -m pip install python-language-server[all]
+print_info "Installing python-language-server package to native Python 3, locally."  
+command="python3 -m pip install python-language-server[all]"
+print_exec_command "$command"
 }
 
 install_lua_language_server()
 {
-# Clone vimfiles repo under the linux-config
+# Clone lua language server repo under the linux-config/repo
 lua_language_server_path="$top_dir/repos/lua-language-server"
 if [ -d "$lua_language_server_path" ]; then
-    echo -e "$lua_language_server_path already exists, skipping clone.\n"
+    print_info "$lua_language_server_path already exists, skipping clone."
 else
-    echo -e "Cloning ${lua_language_server_repo} to ${lua_language_server_path}.\n"
-    git clone "$lua_language_server_repo" "$lua_language_server_path"
+    print_info "Cloning ${lua_language_server_repo} to ${lua_language_server_path}."
+    command="git clone $lua_language_server_repo $lua_language_server_path"
+    print_exec_command "$command"
 fi
 
 # Build and install the server
-echo -e "Starting build of lua-language-server."
-cd "$lua_language_server_path" || exit 1 
-git submodule update --init --recursive
-cd 3rd/luamake || exit 1
-compile/install.sh
-cd "$lua_language_server_path" || exit 1 
-./3rd/luamake/luamake rebuild
+print_info "Starting build of lua-language-server."
+command="cd $lua_language_server_path || exit 1"
+print_exec_command "$command"
+command="git submodule update --init --recursive"
+print_exec_command "$command"
+command="cd 3rd/luamake || exit 1"
+print_exec_command "$command"
+command="compile/install.sh"
+print_exec_command "$command"
+command="cd $lua_language_server_path || exit 1"
+print_exec_command "$command"
+command="./3rd/luamake/luamake rebuild"
+print_exec_command "$command"
 }
 
 # Check for max num of options
@@ -92,5 +99,5 @@ done
 install_python_neovim
 install_python_language_server
 install_lua_language_server
-echo -e "Be sure to install your plugins the first time you run Neovim by executing:\n:PlugInstall --sync"
+print_warning "Be sure to install your plugins the first time you run Neovim by executing:\n:PlugInstall --sync"
 exit 0

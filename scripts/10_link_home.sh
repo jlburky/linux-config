@@ -40,8 +40,8 @@ for file in $files; do
     if [ -f ${homefilepath} ]; then
         print_info "${homefilepath} already exists."
         print_info "Backing up as ${homefilepath}.${timestamp}." 
-        print_command "${homefilepath} ${homefilepath}.${timestamp}"
-        mv ${homefilepath} ${homefilepath}.${timestamp}
+        command="mv ${homefilepath} ${homefilepath}.${timestamp}"
+        print_exec_command "$command"
 
     # If does not exist, make directory(ies), then link
     else
@@ -50,14 +50,15 @@ for file in $files; do
         # Get the directory
         dir_only="$(dirname "${homefilepath}")"
         print_info "Making directory ${dir_only}"
-        print_command "mkdir -p ${dir_only}"
-        mkdir -p ${dir_only}
+        command="mkdir -p ${dir_only}"
+        print_exec_command "$command"
     fi
 
     # Link the file
     print_info "Linking to local file to ${top_dir}/${localfilepath}."
-    print_command "ln -fs ${top_dir}/home/${localfilepath} ${homefilepath}"
-    ln -fs ${top_dir}/home/${localfilepath} ${homefilepath}
+    command="ln -fs ${top_dir}/home/${localfilepath} ${homefilepath}"
+    print_exec_command "$command"
+
 done
 }
 
@@ -78,8 +79,8 @@ files=`find ./home -type f`
                 read -p "Remove backup: ${backup}? (y/N)" confirm
                 if [[ ${confirm} == [yY]  ]]; then
                     print_info "Done!"
-                    print_command "rm -f ${backup}"
-                    rm -f ${backup}
+                    command="rm -f ${backup}"
+                    print_exec_command "$command"
                 else
                    print_info "Skipping backup: ${backup} ." 
                 fi

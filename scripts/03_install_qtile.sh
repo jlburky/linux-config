@@ -22,27 +22,29 @@ create_venv()
 # Check that Python 3.10 exists
 if ! command -v "python3.10" &> /dev/null
 then
-    echo "python3.10 could not be found!"
+    print_error "python3.10 could not be found!"
     exit 1
 fi
 
 # Create the Python virtual enviroment
-echo -e "Creating the Qtile venv at:\n${venv_path}"
-python3.10 -m venv ${venv_path}
+print_info "Creating the Qtile venv at:\n${venv_path}"
+command="python3.10 -m venv ${venv_path}"
+print_exec_command "$command"
 
 # Activate the virtual enviroment
-source ${venv_path}/bin/activate
+source "${venv_path}/bin/activate"
 
 # Install the dependencies using the requirements-frozen.txt
-echo -e "Installing qtile from frozen requirements file:\n${venv_path}/requirements-frozen.txt"
-pip install -r ${venv_path}/requirements-frozen.txt
+print_info "Installing qtile from frozen requirements file:\n${venv_path}/requirements-frozen.txt"
+command="pip install -r ${venv_path}/requirements-frozen.txt"
+print_exec_command "$command"
 
 deactivate
 }
 
 create_entry_file()
 {
-echo -e "Creating ${venv_path}/qtile-venv-entry"
+print_info "Creating ${venv_path}/qtile-venv-entry"
 cat > ${venv_path}/qtile-venv-entry <<EOF
 #!/bin/bash
 
@@ -52,20 +54,25 @@ source ${venv_path}/bin/activate
 python ${venv_path}/bin/qtile \$*
 EOF
 
-chmod 755 ${venv_path}/qtile-venv-entry 
+command="chmod 755 ${venv_path}/qtile-venv-entry"
 echo -e "Moving qtile-venv-entry file to /usr/local/bin/"
-sudo mv ${venv_path}/qtile-venv-entry /usr/local/bin/
+command="sudo mv ${venv_path}/qtile-venv-entry /usr/local/bin/"
 }
 
 # Start all over and remove existing virtual env
 remove_venv()
 {
 echo -e "Removing virtual environment located at:\n${venv_path}"
-rm -rf ${venv_path}/bin
-rm -rf ${venv_path}/include
-rm -rf ${venv_path}/lib
-rm -rf ${venv_path}/lib64
-rm -rf ${venv_path}/pyvenv.cfg
+command="rm -rf ${venv_path}/bin"
+print_exec_command "$command"
+command="rm -rf ${venv_path}/include"
+print_exec_command "$command"
+command="rm -rf ${venv_path}/lib"
+print_exec_command "$command"
+command="rm -rf ${venv_path}/lib64"
+print_exec_command "$command"
+command="rm -rf ${venv_path}/pyvenv.cfg"
+print_exec_command "$command"
 }
 
 # Check for max num of options

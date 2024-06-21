@@ -21,14 +21,16 @@ keybindings=${top_dir}/configurations/keybindings.dconf
 
 install_keybindings()
 {
-echo -e "Installing keybindings using the configuration file:\n${keybindings}"
-dconf load /org/cinnamon/desktop/keybindings/ < ${keybindings}
+print_info "Installing keybindings using the configuration file:\n${keybindings}"
+command="dconf load /org/cinnamon/desktop/keybindings/ < ${keybindings}"
+print_exec_command "$command"
 }
 
 capture_keybindings()
 {
-echo -e "Capturing keybindings to the configuration file:\n${keybindings}"
-dconf dump /org/cinnamon/desktop/keybindings/ > ${keybindings}
+print_info "Capturing keybindings to the configuration file:\n${keybindings}"
+command="dconf dump /org/cinnamon/desktop/keybindings/ > ${keybindings}"
+print_exec_command "$command"
 }
 
 # Check for max num of options

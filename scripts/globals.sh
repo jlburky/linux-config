@@ -35,3 +35,8 @@ print_error() {
 print_command() {
     echo -e "${CYN}+ ${1}${NC}"
 }
+
+print_exec_command() {
+    echo -e "${CYN}+ ${1}${NC}"
+    eval "$1"
+}
