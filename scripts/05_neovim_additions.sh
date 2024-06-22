@@ -72,6 +72,18 @@ command="./3rd/luamake/luamake rebuild"
 print_exec_command "$command"
 }
 
+# This installation adds an alias call 'luamake' to the user's .bashrc file;
+# move this to .bashrc_local
+move_luamake_alias()
+{
+    print_info "Moving luamake alias from .bashrc to .bashrc_local"
+    lua_alias=$(grep "alias luamake" "$HOME/.bashrc")
+    command="echo '$lua_alias' >> $top_dir/home/.bashrc_local"
+    print_exec_command "$command"
+    command="sed -i '/alias luamake/d' $top_dir/home/.bashrc"
+    print_exec_command "$command"
+}
+
 # Check for max num of options
 maxnumargs=1
 if [ "$#" -gt $maxnumargs ]; then
@@ -99,5 +111,6 @@ done
 install_python_neovim
 install_python_language_server
 install_lua_language_server
+move_luamake_alias
 print_warning "Be sure to install your plugins the first time you run Neovim by executing:\n:PlugInstall --sync"
 exit 0

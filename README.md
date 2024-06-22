@@ -70,5 +70,4 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 
 * Add gitconfig.
 * Update qtile config.py to support two monitors by repeating Screen object.
-* Interactively offer to the the repos in the install scripts.
-* Move the luamake alias automatically to .bashrc_local
+* Interactively offer to change the repos in the install scripts.
