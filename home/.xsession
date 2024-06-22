@@ -2,4 +2,4 @@
 
 xsetroot -solid black
 
-exec qtile-venv-entry start
+exec "$HOME/.local/bin/qtile-venv-entry start"

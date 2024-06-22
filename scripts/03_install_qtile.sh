@@ -55,8 +55,9 @@ python ${venv_path}/bin/qtile \$*
 EOF
 
 command="chmod 755 ${venv_path}/qtile-venv-entry"
-echo -e "Moving qtile-venv-entry file to /usr/local/bin/"
-command="sudo mv ${venv_path}/qtile-venv-entry /usr/local/bin/"
+print_exec_command "$command"
+print_info "Moving qtile-venv-entry file to $HOME/.local/bin/"
+command="sudo mv ${venv_path}/qtile-venv-entry $HOME/.local/bin/"
 print_exec_command "$command"
 }
 
