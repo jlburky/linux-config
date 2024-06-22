@@ -27,7 +27,7 @@ then
 fi
 
 # Create the Python virtual enviroment
-print_info "Creating the Qtile venv at:\n${venv_path}"
+print_info "Creating the Qtile venv at:\n${venv_path}."
 command="python3.10 -m venv ${venv_path}"
 print_exec_command "$command"
 
@@ -35,7 +35,7 @@ print_exec_command "$command"
 source "${venv_path}/bin/activate"
 
 # Install the dependencies using the requirements-frozen.txt
-print_info "Installing qtile from frozen requirements file:\n${venv_path}/requirements-frozen.txt"
+print_info "Installing qtile from frozen requirements file:\n${venv_path}/requirements-frozen.txt."
 command="pip install -r ${venv_path}/requirements-frozen.txt"
 print_exec_command "$command"
 
@@ -44,7 +44,7 @@ deactivate
 
 create_entry_file()
 {
-print_info "Creating ${venv_path}/qtile-venv-entry"
+print_info "Creating ${venv_path}/qtile-venv-entry."
 cat > ${venv_path}/qtile-venv-entry <<EOF
 #!/bin/bash
 
@@ -57,6 +57,7 @@ EOF
 command="chmod 755 ${venv_path}/qtile-venv-entry"
 echo -e "Moving qtile-venv-entry file to /usr/local/bin/"
 command="sudo mv ${venv_path}/qtile-venv-entry /usr/local/bin/"
+print_exec_command "$command"
 }
 
 # Start all over and remove existing virtual env

@@ -80,7 +80,7 @@ move_luamake_alias()
     lua_alias=$(grep "alias luamake" "$HOME/.bashrc")
     command="echo '$lua_alias' >> $top_dir/home/.bashrc_local"
     print_exec_command "$command"
-    command="sed -i '/alias luamake/d' $top_dir/home/.bashrc"
+    command="sed -i '/alias luamake/d' $HOME/.bashrc"
     print_exec_command "$command"
 }
 
