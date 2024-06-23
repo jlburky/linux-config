@@ -56,8 +56,8 @@ EOF
 
 command="chmod 755 ${venv_path}/qtile-venv-entry"
 print_exec_command "$command"
-print_info "Moving qtile-venv-entry file to $HOME/.local/bin/"
-command="sudo mv ${venv_path}/qtile-venv-entry $HOME/.local/bin/"
+print_info "Moving qtile-venv-entry file to $top_dir/home/.local/bin/"
+command="mv ${venv_path}/qtile-venv-entry $top_dir/home/.local/bin/"
 print_exec_command "$command"
 }
 
