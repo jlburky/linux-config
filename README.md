@@ -68,8 +68,6 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 
 ## To Do
 
-* Add gitconfig.
+* Add gitconfig script before vim stuff.
 * Update qtile config.py to support two monitors by repeating Screen object.
-* Fix qtile-entry for different users.
-* Interactively offer to change the repos in the install scripts.
 * Resolve `flake8` errors during neovim install.
