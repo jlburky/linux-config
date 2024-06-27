@@ -72,4 +72,5 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 * Update qtile config.py to support two monitors by repeating Screen object.
 * Resolve `flake8` errors during neovim install.
 * Offer option to set font size in Xdefaults
+* Check if `lua-language-server` submodules already exist, if so, don't update
   
