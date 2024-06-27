@@ -68,6 +68,8 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 
 ## To Do
 
-* Add gitconfig script before vim stuff.
+* Add gitconfig script before vim stuff and get username, email and offer if you want to disable ssl.
 * Update qtile config.py to support two monitors by repeating Screen object.
 * Resolve `flake8` errors during neovim install.
+* Offer option to set font size in Xdefaults
+  
