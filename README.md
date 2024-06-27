@@ -25,7 +25,7 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 ## Directories
 
 * `home` - files to be directly linked to the user's home directory.
-* `configuraions` - files and directories that don't map directly to a user's
+* `configurations` - files and directories that don't map directly to a user's
   `$HOME` directory.
 * `scripts` - scripts to automate the environment; each script is prepended
   numerically to provide a run order guidance. All scripts must be run from this directory.
@@ -73,4 +73,5 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 * Resolve `flake8` errors during neovim install.
 * Offer option to set font size in Xdefaults
 * Check if `lua-language-server` submodules already exist, if so, don't update
+* Attempt to dockerize nvim with language server
   
