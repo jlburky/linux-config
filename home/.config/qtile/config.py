@@ -197,7 +197,43 @@ screens = [
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
             ],
-            25,
+            30,
+        ),
+    ),
+    Screen(
+        # CUSTOM
+        bottom=bar.Bar(
+            [
+                widget.GroupBox(
+                    active=colors[2],
+                    inactive=colors[8],
+                    highlight_method="block",
+                    this_current_screen_border=colors[7],                         
+                    this_screen_border=colors[1],                         
+                    other_current_screen_border=colors[0],                         
+                    other_screen_border=colors[0],                         
+                    foreground=colors[2],                         
+                    background=colors[0],
+                    ),
+                widget.Sep(
+                    linewidth=2,
+                    size_percent=100,
+                    foreground=colors[2],                         
+                    background=colors[0],
+                    ),
+                widget.Prompt(),
+                widget.WindowTabs(
+                    foreground=colors[2],
+                    background=colors[6],
+                    ),
+                widget.CurrentLayout(background=colors[7]),
+                widget.TextBox("%s" % HOSTNAME, name="default",
+                    foreground=colors[2],
+                    background=colors[4],
+                    ),
+                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+            ],
+            30,
         ),
     ),
 ]
