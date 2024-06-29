@@ -33,9 +33,24 @@ command="sed -e "s@/path/to@${top_dir}/repos@g" "${template}" > ${top_dir}/home/
 print_exec_command "$command"
 }
 
+offer_fontsize()
+{
+# Get the default font size
+fontsize=$(grep --max-count=1 pixelsize "$template" | cut -d '=' -f2)
+
+read -rp "Change default font size: ${fontsize}? (y/N)" ans
+if [[ "${ans}" == [yY]  ]]; then
+    read -rp "Enter new font size: " ans
+    command="sed -i 's@pixelsize=${fontsize}@pixelsize=${ans}@g' ${top_dir}/home/.Xdefaults"
+    print_exec_command "$command"
+    print_info "Done!"
+fi
+
+}
+
 # Check for max num of options
 maxnumargs=1
-if [ "$#" -gt $maxnumargs ]; then
+if [ "$#" -gt ${maxnumargs} ]; then
     usage
     exit 1
 fi
@@ -56,4 +71,5 @@ done
 
 # Execute all customizations
 create_xdefaults
+offer_fontsize
 exit 0

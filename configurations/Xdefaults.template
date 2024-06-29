@@ -42,8 +42,8 @@ Xft*hinting: full
 *internalBorder: 2
 
 !--------------------font preferences
-URxvt.font: xft:DejaVu Sans Mono:bold:pixelsize=12
-URxvt.boldfont: xft:DejaVu Sans Mono:bold:pixelsize=12
+URxvt.font: xft:DejaVu Sans Mono:bold:pixelsize=14
+URxvt.boldfont: xft:DejaVu Sans Mono:bold:pixelsize=14
 URxvt*letterSpace: -1
 Xft*antialias: true
 

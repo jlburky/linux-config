@@ -69,6 +69,5 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 ## To Do
 
 * Add gitconfig script before vim stuff and get username, email and offer if you want to disable ssl.
-* Offer option to set font size in Xdefaults
 * Check if `lua-language-server` submodules already exist, if so, don't update
 * Attempt to dockerize nvim with language server
