@@ -120,7 +120,8 @@ fi
 # Everything before this line, was provided by the Ubuntu 20.04; there may be
 
 # My custom exports common across all dev environements
-export PATH="$PATH:."
+# Baseline path to all environments
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:$HOME/.local/bin:."
 
 # My custom aliases common across all dev environements
 alias wss="cd $HOME/Workspaces"
