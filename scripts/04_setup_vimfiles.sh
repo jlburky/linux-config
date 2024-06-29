@@ -80,6 +80,59 @@ print_info "Exporting VIMUSERLOCALFILES to this repo in your $top_dir/home/.bash
 echo "export VIMUSERLOCALFILES=\"${vimuserlocalfiles_path}\"" >> "$top_dir/home/.bashrc_local"
 }
 
+
+create_venv()
+{
+venv_path=${top_dir}/venvs/pynvim
+# Check that Python 3.10 exists
+if ! command -v "python3.10" &> /dev/null
+then
+    print_error "python3.10 could not be found!"
+    exit 1
+fi
+
+# Create the Python virtual enviroment
+print_info "Creating the pynvim venv at:\n${venv_path}."
+command="python3.10 -m venv ${venv_path}"
+print_exec_command "$command"
+
+# Activate the virtual enviroment
+source "${venv_path}/bin/activate"
+
+# Install the dependencies using the requirements-frozen.txt
+print_info "Installing pynvim to ${venv_path}."
+command="pip install pynvim"
+print_exec_command "$command"
+
+deactivate
+
+# Link to ~/venvs/pynvim as expected in vimfiles/vimrc
+    # Check if file already exists, backup, then link
+dirpath=$HOME/venvs/pynvim
+localdirpath=$top_dir/venvs/pynvim
+if [ -d "$dirpath" ]; then
+    print_info "$dirpath already exists."
+    print_info "Backing up as $dirpath.$timestamp." 
+    command="mv $dirpath $dirpath.$timestamp"
+    print_exec_command "$command"
+
+# If does not exist, make directory(ies), then link
+else
+    print_info "$dirpath does not exist."
+
+    # Get the directory
+    dir_only="$(dirname "$dirpath")"
+    print_info "Making directory $dir_only"
+    command="mkdir -p ${dir_only}"
+    print_exec_command "$command"
+fi
+
+# Link the file
+print_info "Linking to local directory $top_dir/$localdirpath."
+command="ln -fs $localdirpath $dirpath"
+print_exec_command "$command"
+}
+
 # Check for max num of options
 maxnumargs=1
 if [ "$#" -gt $maxnumargs ]; then
@@ -106,4 +159,7 @@ done
 
 configure_vimfiles
 configure_vimuserlocalfiles
+create_venv
+print_info "Be sure ~/.config/nvim/init.vim is configured."
+print_info "You are now setup to use all the features for Vim and Neovim provided by vimfiles."
 exit 0

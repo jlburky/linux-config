@@ -69,11 +69,7 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 ## To Do
 
 * Add gitconfig script before vim stuff and get username, email and offer if you want to disable ssl.
-* Update qtile config.py to support two monitors by repeating Screen object.
 * Offer option to set font size in Xdefaults
 * Check if `lua-language-server` submodules already exist, if so, don't update
 * Attempt to dockerize nvim with language server
 * Baseline in .bashrc the PATH
-* Rename 04_configure_vim to 04_setup_vimfiles.
-* Add install of venv with pynvim to 04_setup_vimfiles.
-  
