@@ -1,7 +1,11 @@
 # linux-config
 
-Custom files used to configure a user's Linux environment. The folders and files
-under the `home/` directory equivalently map to a users `$HOME` directory.
+Keep all your Linux configurations in one place! 
+
+Link all the folders and files under this repo's `home/` directory to a user's
+`$HOME` directory. Store configuration files under `configurations`. Check out
+external repos under `repos`. Build required Python virtual environments under
+`pyenv`.
 
 ## Pre-reqs
 
@@ -70,6 +74,5 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 
 ## To Do
 
-* Add gitconfig script before vim stuff and get username, email and offer if you want to disable ssl.
 * Check if `lua-language-server` submodules already exist, if so, don't update
 * Attempt to dockerize nvim with language server

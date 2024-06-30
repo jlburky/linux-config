@@ -1,26 +1,26 @@
 [user]
 [core]
-    editor = vim
-    whitespace = fix, trailing-space, cr-at-eol
+	editor = vim
+	whitespace = fix, trailing-space, cr-at-eol
 [color]
-    ui = auto
+	ui = auto
 [color "branch"]
-    current = yellow bold
-    local = green bold
-    remote = cyan bold
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [color "status"]
-    added = green bold
-    changed = yellow bold
-    untracked = red bold
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
 [diff]
-    tool = meld
+	tool = meld
 [http]
-    sslVerify = true
+	sslVerify = true
 [push]
-    default = simple
+	default = simple
