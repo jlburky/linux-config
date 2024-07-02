@@ -55,9 +55,6 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 * `home/.xsession` - default configuration for Qtile to start under Remote Desktop
   (RDP).
 * `home/.vimrc` - Vim initialization file configured to use runtime Vim.
-    ```
-    URxvt*perl-lib: /path/to/this/urxvt-vim-scrollback
-    ```
 * `configurations/keybindings.dconf` - the custom keybindings used in the
   Cinnamon desktop environment.
 * `configurations/qtile-default-config.py` - default Qtile configuration primarily
