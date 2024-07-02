@@ -18,7 +18,7 @@ external repos under `repos`. Build required Python virtual environments under
 * `rxvt-unicode-256color`
 * terminator
 * Python 3.10 (for Qtile specifically)
-* vim
+* vim 8.1+ (requires compilation of Python 3.6+)
 
 ## Installation
 
