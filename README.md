@@ -50,8 +50,8 @@ specifically on the installation of Qtile [are here.](QTILE.md)
   configuration.
 * `home/.config/terminator/config` - configuration the Terminator terminal
   emulator.
-* `home/.gitconfig` - user's Git configuration minus name and email.
-  configurations local to a particular dev environment. 
+* `home/.gitconfig` - user's Git configuration minus name and email configurations
+  local to a particular dev environment. 
 * `home/.xsession` - default configuration for Qtile to start under Remote Desktop
   (RDP).
 * `home/.vimrc` - Vim initialization file configured to use runtime Vim.
