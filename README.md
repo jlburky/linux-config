@@ -69,6 +69,13 @@ specifically on the installation of Qtile [are here.](QTILE.md)
 * `venvs/qtile-venv` - reserved to create the Qtile virtual environment using
   the `requirements-frozen.txt` in that directory.
 
+## Tips and Tricks
+
+To test your Git configuration,
+```
+$ git config --list
+```
+
 ## To Do
 
 * Check if `lua-language-server` submodules already exist, if so, don't update
