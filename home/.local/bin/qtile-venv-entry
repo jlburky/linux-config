@@ -1,4 +1,6 @@
 #!/bin/bash
 
-# This file is intended to be empty and will be populated by the installation 
-# script
+# This glue shell is only needed when you want to run Qtile within a virtualenv
+
+source /home/jlburky/Git/linux-config/venvs/qtile-venv/bin/activate
+python /home/jlburky/Git/linux-config/venvs/qtile-venv/bin/qtile $*

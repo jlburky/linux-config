@@ -1,3 +1,5 @@
 # ~/.bashrc_local: called by .bashrc
 # Place any customizations local to this dev environment here.
-
+export VIMUSERLOCALFILES="/home/jlburky/Git/linux-config/repos/vimuserlocalfiles"
+export PATH="$PATH:/snap/bin:"
+alias luamake="/home/jlburky/Git/linux-config/repos/lua-language-server/3rd/luamake/luamake"

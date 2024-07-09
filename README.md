@@ -40,21 +40,26 @@ specifically on the installation of Qtile [are here.](QTILE.md)
   
 ## Configuration Descriptions
 
-* `home/.bashrc` - user's bash configurations common across all dev environments. 
-* `home/.bashrc_local` - empty file (a placeholder) for user's bash
+* `stow/bash/.bashrc` - user's bash configurations common across all dev
+  environments. 
+* `stow/bash/.bashrc_local` - empty file (a placeholder) for user's bash
+  configurations local to a particular dev environment and called by `.bashrc`. 
+* `stow/git/.gitconfig` - user's Git configuration minus name and email
   configurations local to a particular dev environment. 
-* `home/.config/nvim/init.vim` - initialization file to configure Nvim to use
+* `stow/git/.gitconfig_local` - user's local Git configuration including name and email
+  configurations and called by `.gitconfig`. 
+* `stow/nvim/.config/nvim/init.vim` - initializations to configure Nvim to use
   Doc Mike's vimfiles.
-* `home/.config/qtile/config.py` - my custom Qtile configuration. 
-* `home/.config/qtile/qtile-background.jpg` - background image used in my Qtile
-  configuration.
-* `home/.config/terminator/config` - configuration the Terminator terminal
-  emulator.
-* `home/.gitconfig` - user's Git configuration minus name and email configurations
-  local to a particular dev environment. 
-* `home/.xsession` - default configuration for Qtile to start under Remote Desktop
-  (RDP).
-* `home/.vimrc` - Vim initialization file configured to use runtime Vim.
+* `stow/qtile/.config/qtile/config.py` - my custom Qtile configuration. 
+* `stow/qtile/.config/qtile/qtile-background.jpg` - background image used in my
+  Qtile configuration.
+* `stow/qtile/.local/bin/qtile-venv-entry` - glue shell script that is called to
+  start Qtile in a virtual environment; populated by installation script.
+* `stow/qtile/.xsession` - default configuration for Qtile to start under Remote
+  Desktop (RDP).
+* `stow/terminator/.config/terminator/config` - configuration for the Terminator
+  terminal emulator.
+* `stow/vim/.vimrc` - Vim initialization file configured to use runtime Vim.
 * `configurations/keybindings.dconf` - the custom keybindings used in the
   Cinnamon desktop environment.
 * `configurations/qtile-default-config.py` - default Qtile configuration primarily
