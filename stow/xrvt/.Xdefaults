@@ -1,0 +1,57 @@
+!--------------------xdefaults
+*.background: #1d1f21
+*.foreground: #c5c8c6
+*.cursorColor: #c5c8c6
+
+! black
+URxvt*color0: #282a2e
+URxvt*color8: #373b41
+
+! red
+URxvt*color1: #a54242
+URxvt*color9: #cc6666
+
+! green
+URxvt*color2: #8c9440
+URxvt*color10: #b5bd68
+
+! yellow
+URxvt*color3: #de935f
+URxvt*color11: #f0c674
+
+! blue
+URxvt*color4: #5f819d
+URxvt*color12: #81a2be
+
+! magenta
+URxvt*color5: #85678f
+URxvt*color13: #b294bb
+
+! cyan
+URxvt*color6: #5e8d87
+URxvt*color14: #8abeb7
+
+! white
+URxvt*color7: #707880
+Urxvt*color15: #c5c8c6
+
+URxvt*termName: rxvt-unicode
+URxvt*scrollBar: false
+URxvt*saveLines: 200000
+Xft*hinting: full
+*internalBorder: 2
+
+!--------------------font preferences
+URxvt.font: xft:DejaVu Sans Mono:bold:pixelsize=15
+URxvt.boldfont: xft:DejaVu Sans Mono:bold:pixelsize=15
+URxvt*letterSpace: -1
+Xft*antialias: true
+
+!--------------------urxvt-vim-scrollback
+URxvt*perl-lib: /home/jlburky/Git/linux-config/repos/urxvt-vim-scrollback
+URxvt*perl-ext-common: vim-scrollback
+URxvt.vim-scrollback: Control-s
+!URxvt.vim-scrollback-paste: Control-p
+
+!------------------unused-configurations
+! URxvt*secondaryScreen: true

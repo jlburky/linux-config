@@ -1,0 +1,3 @@
+#!/bin/bash
+
+# This glue shell is only needed when you want to run Qtile within a virtualenv
