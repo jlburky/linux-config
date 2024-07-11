@@ -1,15 +1,17 @@
 #!/bin/bash
-# create_xdefaults.sh - creates the .Xdefaults file and places it in the this
-# repos home directory for linking
+
 usage()
 {
 cat << EOF
-Usage: $0 [options]
+Usage: $0 COMMAND
 
-Creates the .Xdefaults file that configures the urxvt terminal and places it in 
-the this repos home directory for linking.
+Creates the .Xdefaults file that configures the rxvt terminal, places it in the
+this repos stow/xrvt directory, then links it to the user's home directory using
+stow.
 
-OPTIONS:
+COMMANDS:
+-i, --install       Install configs.
+-u, --uninstall     Uninstall all configs executed by this script.
 -h, --help          This message.
 
 EOF
@@ -82,43 +84,32 @@ cd - > /dev/null
 }
 
 # Check for max num of options
-maxnumargs=1
-if [ "$#" -gt ${maxnumargs} ]; then
+numargs=1
+if [ "$#" -ne ${numargs} ]; then
     usage
     exit 1
 fi
 
-case "$#" in
-    # No arguments
-    0)
-        create_xdefaults
-        offer_fontsize
-        stow_xrvt
-        exit 0
-        ;;
-    # Single argument
-    1)
-        for opt in "$@"; do
-            case ${opt} in
-                -h|--help)
-                    usage
-                    exit 0
-                    ;;
-                -D|--delete)
-                    unstow_xrvt 
-                    remove_xdefaults
-                    exit 0
-                    ;;
-                *)
-                    echo "Invalid option."
-                    exit 1
-                    ;;
-             esac
-        done
-        ;;
-    # More than a single argument
-    *)
-        usage
-        exit 1
-        ;;
-esac
+for opt in "$@"; do
+    case ${opt} in
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        -i|--install)
+            create_xdefaults
+            offer_fontsize
+            stow_xrvt
+            exit 0
+            ;;
+        -u|--uninstall)
+            unstow_xrvt 
+            remove_xdefaults
+            exit 0
+            ;;
+        *)
+            echo "Invalid option."
+            exit 1
+            ;;
+     esac
+done

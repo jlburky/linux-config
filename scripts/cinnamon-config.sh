@@ -1,14 +1,13 @@
 #!/bin/bash
-# cinnamon_keybindings.sh - captures or installs the Cinnamon keybindings.
 usage()
 {
 cat << EOF
-Usage: $0 [options]
+Usage: $0 COMMAND
 
 Uses the stored keybindings.dconf files to install custom keybindings for the
 Cinnamon desktop environment.
 
-OPTIONS:
+COMMAND:
 -i, --install       Install the keybindings from the stored configuration file.
 -c, --capture       Capture the keybindings to the stored configuration file.
 -h, --help          This message.
@@ -34,8 +33,8 @@ print_exec_command "$command"
 }
 
 # Check for max num of options
-maxnumargs=1
-if [ "$#" -ne $maxnumargs ]; then
+numargs=1
+if [ "$#" -ne $numargs ]; then
     usage
     exit 1
 fi

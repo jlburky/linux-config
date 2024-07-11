@@ -9,8 +9,8 @@ Wrapper that simplifies call to install and uninstall a single stow "package" in
 a user's home directory.
 
 OPTIONS:
--h, --help          This message.
 -D, --delete        Unstow the package that follows this option.
+-h, --help          This message.
 
 EOF
 }
