@@ -19,8 +19,6 @@
 	untracked = red bold
 [diff]
 	tool = meld
-[http]
-	sslVerify = true
 [push]
 	default = simple
 [include]

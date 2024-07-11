@@ -59,7 +59,6 @@ cat > ${xdefaults} <<EOF
 EOF
 }
 
-
 # Stow the xrvt package
 stow_xrvt()
 {
