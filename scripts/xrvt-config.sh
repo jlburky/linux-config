@@ -18,12 +18,13 @@ EOF
 source globals.sh
 
 #---------- Configure and Install .Xdefaults ----------
+xdefaults=${top_dir}/stow/xrvt/.Xdefaults
+
 create_xdefaults()
 {
 # Update the .Xdefaults to point to this urxvt-vim-scrollback location using
 # a template
 template=${top_dir}/configurations/Xdefaults.template
-xdefaults=${top_dir}/stow/xrvt/.Xdefaults
 
 # Search and replace the pattern in the template "/path/to" with user's path;
 # note the trick, that since our variable uses "/" we use the @ delimiter since
@@ -48,6 +49,14 @@ if [[ "${ans}" == [yY]  ]]; then
 fi
 }
 
+# Remove the generated .Xdefaults file
+remove_xdefaults()
+{
+command="rm ${xdefaults}"
+print_exec_command "$command"
+}
+
+
 # Stow the xrvt package
 stow_xrvt()
 {
@@ -60,6 +69,18 @@ print_exec_command "$command"
 cd - > /dev/null
 }
 
+# Unstow the xrvt package
+unstow_xrvt()
+{
+command="cd ${top_dir}/stow"
+print_exec_command "$command"
+
+command="../scripts/stow-home.sh --delete xrvt"
+print_exec_command "$command"
+
+cd - > /dev/null
+}
+
 # Check for max num of options
 maxnumargs=1
 if [ "$#" -gt ${maxnumargs} ]; then
@@ -67,23 +88,37 @@ if [ "$#" -gt ${maxnumargs} ]; then
     exit 1
 fi
 
-# Gather options
-for opt in "$@"; do
-    case ${opt} in
-        -h|--help)
-            usage
-            exit 0
-            ;;
-        *)
-            echo "Invalid option."
-            exit 1
-            ;;
-     esac
-done
-
-# Execute all customizations
-create_xdefaults
-offer_fontsize
-stow_xrvt
-#TODO offer uninstall or --delete -D option
-exit 0
+case "$#" in
+    # No arguments
+    0)
+        create_xdefaults
+        offer_fontsize
+        stow_xrvt
+        exit 0
+        ;;
+    # Single argument
+    1)
+        for opt in "$@"; do
+            case ${opt} in
+                -h|--help)
+                    usage
+                    exit 0
+                    ;;
+                -D|--delete)
+                    unstow_xrvt 
+                    remove_xdefaults
+                    exit 0
+                    ;;
+                *)
+                    echo "Invalid option."
+                    exit 1
+                    ;;
+             esac
+        done
+        ;;
+    # More than a single argument
+    *)
+        usage
+        exit 1
+        ;;
+esac
