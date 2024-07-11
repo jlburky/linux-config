@@ -15,14 +15,14 @@ EOF
 
 source globals.sh
 
-# Set the location of the local .gitconfig
-git_config=${top_dir}/home/.gitconfig
+# Set the location of the .gitconfig_local
+git_config_local=${top_dir}/stow/git/.gitconfig_local
 
 # Set the user's name in the .gitconfig
 set_username()
 {
 read -rp "Enter desired name presented in git commits: " ans
-command="git config --file=${git_config} user.name \"${ans}\""
+command="git config --file=${git_config_local} user.name \"${ans}\""
 print_exec_command "${command}"
 }
 
@@ -30,7 +30,7 @@ print_exec_command "${command}"
 set_email()
 {
 read -rp "Enter desired email presented in git commits: " ans
-command="git config --file=${git_config} user.email \"${ans}\""
+command="git config --file=${git_config_local} user.email \"${ans}\""
 print_exec_command "${command}"
 }
 
@@ -39,7 +39,7 @@ offer_sslVerify_false()
 {
 read -rp "Do you want to change the HTTP SSL verify to false? (y/N)" ans
 if [[ "${ans}" == [yY]  ]]; then
-    command="git config --file=${git_config} http.sslVerify \"false\""
+    command="git config --file=${git_config_local} http.sslVerify \"false\""
     print_exec_command "${command}"
 fi
 }
