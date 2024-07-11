@@ -10,6 +10,8 @@ top_dir=`dirname ${script_dir}`
 # Get a timestamp for replacing existing files
 timestamp=$(date +"%Y%m%d%H%M")
 
+export PATH=$PATH:$PWD
+
 # Provide ANSI colors
 # Usage example:
 # print_info "This is good info!"
