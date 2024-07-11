@@ -52,10 +52,11 @@ fi
 }
 
 # Remove the generated .Xdefaults file
-remove_xdefaults()
+reset_xdefaults()
 {
-command="rm ${xdefaults}"
-print_exec_command "$command"
+cat > ${xdefaults} <<EOF
+# This file is intentionally blank to reserve it.
+EOF
 }
 
 
@@ -104,7 +105,7 @@ for opt in "$@"; do
             ;;
         -u|--uninstall)
             unstow_xrvt 
-            remove_xdefaults
+            reset_xdefaults
             exit 0
             ;;
         *)
