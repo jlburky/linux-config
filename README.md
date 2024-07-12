@@ -84,6 +84,7 @@ $ git config --list
 
 ## To Do
 
+* Don't forget to stow bash and deal with .bashrc_local doesn't exist initially
 * Maybe move qtile venv under stow?
 * Check if `lua-language-server` submodules already exist, if so, don't update
 * Attempt to dockerize nvim with language server

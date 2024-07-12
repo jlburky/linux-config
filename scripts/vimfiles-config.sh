@@ -203,6 +203,7 @@ for opt in "$@"; do
             clone_vimfiles
             link_vimfiles
             clone_vimuserlocalfiles
+            export_vimuserlocalfiles
             create_venv
             stow_vimfiles
             print_info "You are now setup to use the features for Vim and Neovim provided by vimfiles."
