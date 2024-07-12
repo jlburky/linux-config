@@ -168,7 +168,7 @@ print_exec_command "$command"
 command="../scripts/stow-home.sh --install vimfiles"
 print_exec_command "$command"
 
-cd - > /dev/null
+cd - > /dev/null || exit 1
 }
 
 # Unstow the vimfiles package
@@ -180,7 +180,19 @@ print_exec_command "$command"
 command="../scripts/stow-home.sh --uninstall vimfiles"
 print_exec_command "$command"
 
-cd - > /dev/null
+cd - > /dev/null || exit 1
+}
+
+# Stow the bash package since we made changes to .bashrc_local
+stow_bash()
+{
+command="cd ${top_dir}/stow"
+print_exec_command "$command"
+
+command="../scripts/stow-home.sh --install bash"
+print_exec_command "$command"
+
+cd - > /dev/null || exit 1
 }
 
 # Check for max num of options
@@ -204,6 +216,7 @@ for opt in "$@"; do
             link_vimfiles
             clone_vimuserlocalfiles
             export_vimuserlocalfiles
+            stow_bash
             create_venv
             stow_vimfiles
             print_info "You are now setup to use the features for Vim and Neovim provided by vimfiles."
