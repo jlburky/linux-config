@@ -69,7 +69,7 @@ fi
 dotvim="${HOME}/.vim"
 unlink_vimfiles()
 {
-if [ -d ${dotvim} ]; then
+if [ -d "${dotvim}" ]; then
     print_info "Removing existing ${dotvim}."
     command="rm -f ${dotvim}"
     print_exec_command "$command"
@@ -98,7 +98,7 @@ fi
 clone_vimuserlocalfiles()
 {
 # Clone vimfiles repo under the linux-config
-if [ -d ${vimuserlocalfiles_path} ]; then
+if [ -d "${vimuserlocalfiles_path}" ]; then
     print_info "${vimuserlocalfiles_path} already exists, skipping clone."
 else
     print_info "Cloning ${vimuserlocalfiles_repo} to ${vimuserlocalfiles_path}."
@@ -131,7 +131,7 @@ venv_path="${top_dir}/stow/vimfiles/venvs/pynvim"
 create_venv()
 {
 # Create the Python virtual enviroment
-if [ -d ${venv_path} ]; then
+if [ -d "${venv_path}" ]; then
     print_info "${venv_path} already exists, skipping."
 else
     print_info "Creating the venv to support nvim at:\n${venv_path}."
