@@ -1,14 +1,17 @@
 #!/bin/bash
+
 usage()
 {
 cat << EOF
-Usage: $0 [options]
+Usage: $0 COMMAND
 
-Add the Git configuration name and email address to the existing home/.gitconfig
-file. Also, offer to disable HTTP SSL verify.
+Set the user's Git configuration file and add the local Git configurations like
+the name and email address to a home/.gitconfig_local file. 
 
-OPTIONS:
+COMMANDS:
 -h, --help          This message.
+-i, --install       Install git configs.
+-u, --uninstall     Uninstall all configs executed by this script.
 
 EOF
 }
@@ -60,7 +63,7 @@ stow_git()
 command="cd ${top_dir}/stow"
 print_exec_command "$command"
 
-command="../scripts/stow-home.sh git"
+command="../scripts/stow-home.sh --install git"
 print_exec_command "$command"
 
 cd - > /dev/null
@@ -72,7 +75,7 @@ unstow_git()
 command="cd ${top_dir}/stow"
 print_exec_command "$command"
 
-command="../scripts/stow-home.sh --delete git"
+command="../scripts/stow-home.sh --uninstall git"
 print_exec_command "$command"
 
 cd - > /dev/null

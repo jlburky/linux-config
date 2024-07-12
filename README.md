@@ -20,11 +20,12 @@ external repos under `repos`. Build required Python virtual environments under
 * Python 3.10 (for Qtile specifically)
 * vim 8.1+ (with: Python 3.6+, xterm_clipboard)
 
-## Installation
+## Installations
 
 In the `scripts` directory, are short scripts for each installation. Run the
-script with the `--help` option to get a description and usage. Notes
-specifically on the installation of Qtile [are here.](QTILE.md)
+script with the `--help` option to get a description and usage. Details
+specifically on the installation of Qtile [are here](QTILE.md), though the
+installation script, `qtile-config.sh`, should handle the installation.
 
 ## Directories
 
@@ -83,5 +84,6 @@ $ git config --list
 
 ## To Do
 
+* Maybe move qtile venv under stow?
 * Check if `lua-language-server` submodules already exist, if so, don't update
 * Attempt to dockerize nvim with language server

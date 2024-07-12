@@ -21,7 +21,7 @@ venv_path=${top_dir}/venvs/qtile-venv
 venv_entry="${top_dir}/stow/qtile/.local/bin/qtile-venv-entry"
 
 # Add any dependencies to check here
-deps_check()
+check_deps()
 {
 # Check that Python 3.10 exists
 if ! command -v "python3.10" &> /dev/null
@@ -103,7 +103,7 @@ fi
 command="cd ${top_dir}/stow"
 print_exec_command "$command"
 
-command="../scripts/stow-home.sh qtile"
+command="../scripts/stow-home.sh --install qtile"
 print_exec_command "$command"
 
 cd - > /dev/null
@@ -115,7 +115,7 @@ unstow_qtile()
 command="cd ${top_dir}/stow"
 print_exec_command "$command"
 
-command="../scripts/stow-home.sh --delete qtile"
+command="../scripts/stow-home.sh --uninstall qtile"
 print_exec_command "$command"
 
 cd - > /dev/null
@@ -136,7 +136,7 @@ for opt in "$@"; do
             exit 0
             ;;
         -i|--install)
-            deps_check
+            check_deps
             create_venv
             create_entry_file
             stow_qtile

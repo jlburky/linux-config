@@ -3,13 +3,14 @@
 usage()
 {
 cat << EOF
-Usage: $0 [OPTIONS] PACKAGE
+Usage: $0 [COMMANDS] PACKAGE
 
 Wrapper that simplifies call to install and uninstall a single stow "package" in
 a user's home directory.
 
-OPTIONS:
--D, --delete        Unstow the package that follows this option.
+COMMANDS:
+-i, --install       Stow the package that follows this option.
+-u, --uninstall     Unstow the package that follows this option.
 -h, --help          This message.
 
 EOF
@@ -29,14 +30,14 @@ call_unstow()
 {
 # Note: stow commands are expected to be executed from stow directory
 # stow commands are expected to be executed from stow directory
-command="stow --delete ${2} --target=${HOME}"
+command="stow --delete ${1} --target=${HOME}"
 print_exec_command "${command}"
 }
 
 
 # Check for max num of options
 maxnumargs=2
-if [ "$#" -gt $maxnumargs ]; then
+if [ "$#" -gt "${maxnumargs}" ]; then
     usage
     exit 1
 fi
@@ -48,13 +49,17 @@ for opt in "$@"; do
             usage
             exit 0
             ;;
-        -D|--delete)
-            call_unstow "$@"
+        -i|--install)
+            call_stow "$2"
+            exit 0
+            ;;
+        -u|--uninstall)
+            call_unstow "$2"
             exit 0
             ;;
         *)
-            call_stow "$@"
-            exit 0
+            echo "Invalid option."
+            exit 1
             ;;
      esac
 done

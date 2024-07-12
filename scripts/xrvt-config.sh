@@ -65,7 +65,7 @@ stow_xrvt()
 command="cd ${top_dir}/stow"
 print_exec_command "$command"
 
-command="../scripts/stow-home.sh xrvt"
+command="../scripts/stow-home.sh --install xrvt"
 print_exec_command "$command"
 
 cd - > /dev/null
@@ -77,7 +77,7 @@ unstow_xrvt()
 command="cd ${top_dir}/stow"
 print_exec_command "$command"
 
-command="../scripts/stow-home.sh --delete xrvt"
+command="../scripts/stow-home.sh --uninstall xrvt"
 print_exec_command "$command"
 
 cd - > /dev/null
