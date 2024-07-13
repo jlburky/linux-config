@@ -175,40 +175,6 @@ if [ -h "${venv_link}" ]; then
 fi
 }
 
-# Stow the vimfiles package
-stow_vimfiles()
-{
-command="cd ${top_dir}/stow"
-print_exec_command "$command"
-
-stow-home.sh --install vimfiles
-
-cd - > /dev/null || exit 1
-}
-
-# Unstow the vimfiles package
-unstow_vimfiles()
-{
-command="cd ${top_dir}/stow"
-print_exec_command "$command"
-
-stow-home.sh --uninstall vimfiles
-
-cd - > /dev/null || exit 1
-}
-
-# Stow the bash package since we made changes to .bashrc_local
-stow_bash()
-{
-command="cd ${top_dir}/stow"
-print_exec_command "$command"
-
-command="../scripts/stow-home.sh --install bash"
-print_exec_command "$command"
-
-cd - > /dev/null || exit 1
-}
-
 # Check for max num of options
 numargs=1
 if [ "$#" -ne $numargs ]; then
@@ -230,14 +196,14 @@ for opt in "$@"; do
             link_vimfiles
             clone_vimuserlocalfiles
             export_vimuserlocalfiles
-            stow_bash
+            stowit "bash"
             create_venv
-            stow_vimfiles
+            stowit "vimfiles"
             print_info "You are now setup to use the features for Vim and Neovim provided by vimfiles."
             exit 0
             ;;
         -u|--uninstall)
-            unstow_vimfiles
+            unstowit "vimfiles"
             remove_venv
             remove_export
             remove_vimuserlocalfiles

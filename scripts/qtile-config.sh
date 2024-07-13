@@ -91,36 +91,6 @@ command="rm -rf ${venv_path}/pyvenv.cfg"
 print_exec_command "$command"
 }
 
-# Stow the qtile package
-stow_qtile()
-{
-# Test if ~/.config/qtile exists
-if [ -d "${HOME}/.config/qtile" ]; then
-    command="mkdir -p ${HOME}/.config/qtile"
-print_exec_command "$command"
-fi
-
-command="cd ${top_dir}/stow"
-print_exec_command "$command"
-
-command="../scripts/stow-home.sh --install qtile"
-print_exec_command "$command"
-
-cd - > /dev/null
-}
-
-# Unstow the xrvt package
-unstow_qtile()
-{
-command="cd ${top_dir}/stow"
-print_exec_command "$command"
-
-command="../scripts/stow-home.sh --uninstall qtile"
-print_exec_command "$command"
-
-cd - > /dev/null
-}
-
 # Check for max num of options
 numargs=1
 if [ "$#" -ne ${numargs} ]; then
@@ -139,11 +109,11 @@ for opt in "$@"; do
             check_deps
             create_venv
             create_entry_file
-            stow_qtile
+            stowit "qtile"
             exit 0
             ;;
         -u|--uninstall)
-            unstow_qtile
+            unstowit "qtile"
             remove_venv
             reset_entry_file
             exit 0

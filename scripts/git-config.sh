@@ -57,30 +57,6 @@ print_exec_command "${command}"
 
 }
 
-# Stow the git package
-stow_git()
-{
-command="cd ${top_dir}/stow"
-print_exec_command "$command"
-
-command="../scripts/stow-home.sh --install git"
-print_exec_command "$command"
-
-cd - > /dev/null
-}
-
-# Unstow the git package
-unstow_git()
-{
-command="cd ${top_dir}/stow"
-print_exec_command "$command"
-
-command="../scripts/stow-home.sh --uninstall git"
-print_exec_command "$command"
-
-cd - > /dev/null
-}
-
 # Check for max num of options
 numargs=1
 if [ "$#" -ne ${numargs} ]; then
@@ -99,11 +75,11 @@ for opt in "$@"; do
             set_username
             set_email
             offer_sslVerify_false
-            stow_git
+            stowit "git"
             exit 0
             ;;
         -u|--uninstall)
-            unstow_git
+            unstowit "git"
             remove_git_local
             exit 0
             ;;

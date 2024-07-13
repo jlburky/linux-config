@@ -42,3 +42,29 @@ print_exec_command() {
     echo -e "${CYN}+ ${1}${NC}"
     eval "$1"
 }
+
+stowit()
+{
+command="cd ${top_dir}/stow"
+print_exec_command "$command"
+
+# Note: stow commands are expected to be executed from stow directory
+# Always use the "restow" option, even if package isn't stow'd
+command="stow --restow ${1} --target=${HOME}"
+print_exec_command "${command}"
+
+cd - > /dev/null || exit 1
+}
+
+unstowit()
+{
+command="cd ${top_dir}/stow"
+print_exec_command "$command"
+
+# Note: stow commands are expected to be executed from stow directory
+# stow commands are expected to be executed from stow directory
+command="stow --delete ${1} --target=${HOME}"
+print_exec_command "${command}"
+
+cd - > /dev/null || exit 1
+}

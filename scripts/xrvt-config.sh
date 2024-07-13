@@ -59,30 +59,6 @@ cat > ${xdefaults} <<EOF
 EOF
 }
 
-# Stow the xrvt package
-stow_xrvt()
-{
-command="cd ${top_dir}/stow"
-print_exec_command "$command"
-
-command="../scripts/stow-home.sh --install xrvt"
-print_exec_command "$command"
-
-cd - > /dev/null
-}
-
-# Unstow the xrvt package
-unstow_xrvt()
-{
-command="cd ${top_dir}/stow"
-print_exec_command "$command"
-
-command="../scripts/stow-home.sh --uninstall xrvt"
-print_exec_command "$command"
-
-cd - > /dev/null
-}
-
 # Check for max num of options
 numargs=1
 if [ "$#" -ne ${numargs} ]; then
@@ -99,11 +75,11 @@ for opt in "$@"; do
         -i|--install)
             create_xdefaults
             offer_fontsize
-            stow_xrvt
+            stowit "xrvt"
             exit 0
             ;;
         -u|--uninstall)
-            unstow_xrvt 
+            unstowit "xrvt" 
             reset_xdefaults
             exit 0
             ;;
