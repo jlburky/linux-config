@@ -25,7 +25,7 @@ xdefaults=${top_dir}/stow/rxvt/.Xdefaults
 check_deps()
 {
 # rxvt comes in varying package names and executable names
-if ! command -v rixvt-unicode &> /dev/null
+if ! command -v rxvt-unicode &> /dev/null
 then
     print_error "'rxvt-unicode' could not be found."
     print_error "It's executable could be under another name and should be linked as rxvt-unicode."
