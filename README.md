@@ -11,6 +11,8 @@ follow these principles:
 * Keep configurations modular. 
 * Ensure configurations can be uninstalled.
 * Provide a "local" configuration for configs local to a development environment.
+* Configure per user. In other words, configurations should not affect other
+  users.
 
 ## What `linux-config` is Not
 
@@ -34,7 +36,10 @@ available.
 * terminator
 * vim 8.1+ (with: Python 3.6+, `xterm_clipboard`)
 
-## Installations
+## Getting Started
+TODO - test with a new user?
+
+### Install Scripts
 
 In the `scripts` directory, are scripts for each installation. Run the
 script with the `--help` option to get a description and usage. All scripts
@@ -103,8 +108,9 @@ $ git config --list
 
 ## To Do
 
+* Create bash-config and terminator-config
+* Convert neovim_addons script.
 * Check that the executable rxvt-unicode exists.
 * Revisit this document.
-* Maybe move qtile venv under stow?
 * Check if `lua-language-server` submodules already exist, if so, don't update
 * Attempt to dockerize nvim with language server

@@ -83,7 +83,7 @@ unlink_vimfiles
 
 print_info "Linking ${dotvim} to ${top_dir}/repos/vimfile."
 command="ln -fs ${top_dir}/repos/vimfiles ${dotvim}"
-print_exec_command "$command"
+print_exec_command "${command}"
 }
 
 remove_vimfiles()
@@ -91,7 +91,7 @@ remove_vimfiles()
 if [ -d "${vimfiles_path}" ]; then
     print_info "Removing clone at ${vimfiles_path}."
     command="rm -rf ${vimfiles_path}"
-    print_exec_command "$command"
+    print_exec_command "${command}"
 fi
 }
 
@@ -103,14 +103,16 @@ if [ -d "${vimuserlocalfiles_path}" ]; then
 else
     print_info "Cloning ${vimuserlocalfiles_repo} to ${vimuserlocalfiles_path}."
     command="git clone ${vimuserlocalfiles_repo} ${vimuserlocalfiles_path}"
-    print_exec_command "$command"
+    print_exec_command "${command}"
 fi
 }
 
+bashrc_local="${top_dir}/stow/bash/.bashrc_local"
+
 export_vimuserlocalfiles()
 {
-print_info "Exporting VIMUSERLOCALFILES to this repo in your $top_dir/stow/bash/.bashrc_local."
-echo "export VIMUSERLOCALFILES=\"${vimuserlocalfiles_path}\"" >> "$top_dir/stow/bash/.bashrc_local"
+print_info "Exporting VIMUSERLOCALFILES to this repo in your ${bashrc_local}."
+echo "export VIMUSERLOCALFILES=\"${vimuserlocalfiles_path}\"" >> "${bashrc_local}"
 }
 
 remove_vimuserlocalfiles()
@@ -118,15 +120,20 @@ remove_vimuserlocalfiles()
 if [ -d "${vimuserlocalfiles_path}" ]; then
     print_info "Removing clone at ${vimuserlocalfiles_path}."
     command="rm -rf ${vimuserlocalfiles_path}"
-    print_exec_command "$command"
+    print_exec_command "${command}"
 fi
+}
 
-# TODO: Remove export in .bashrc_local
+remove_export()
+{
+command="sed -i '/VIMUSERLOCALFILES/d' ${bashrc_local}"
+print_exec_command "${command}"
 }
 
 # Drop pynvim in stow/vimfiles directory to that it will be linked to
 # ~/venvs/pynvim as expected in vimfiles/vimrc
 venv_path="${top_dir}/stow/vimfiles/venvs/pynvim"
+venv_link="${top_dir}/venvs/pynvim"
 
 create_venv()
 {
@@ -134,9 +141,9 @@ create_venv()
 if [ -d "${venv_path}" ]; then
     print_info "${venv_path} already exists, skipping."
 else
-    print_info "Creating the venv to support nvim at:\n${venv_path}."
+    print_info "Creating the venv to support nvim at:\n${venv_path}"
     command="python3.10 -m venv ${venv_path}"
-    print_exec_command "$command"
+    print_exec_command "${command}"
     
     # Activate the virtual enviroment
     source "${venv_path}/bin/activate"
@@ -144,9 +151,13 @@ else
     # Install the dependencies using the requirements-frozen.txt
     print_info "Installing pynvim to ${venv_path}."
     command="pip install pynvim"
-    print_exec_command "$command"
+    print_exec_command "${command}"
     
     deactivate
+
+    # Add link in venvs directory to track it as a virtual environment 
+    command="ln -fs ${venv_path} ${venv_link}"
+    print_exec_command "${command}"
 fi
 }
 
@@ -155,7 +166,12 @@ remove_venv()
 if [ -d "${venv_path}" ]; then
     print_info "Removing virtual environment at ${venv_path}."
     command="rm -rf ${venv_path}"
-    print_exec_command "$command"
+    print_exec_command "${command}"
+fi
+
+if [ -h "${venv_link}" ]; then
+    command="rm -rf ${venv_link}"
+    print_exec_command "${command}"
 fi
 }
 
@@ -165,8 +181,7 @@ stow_vimfiles()
 command="cd ${top_dir}/stow"
 print_exec_command "$command"
 
-command="../scripts/stow-home.sh --install vimfiles"
-print_exec_command "$command"
+stow-home.sh --install vimfiles
 
 cd - > /dev/null || exit 1
 }
@@ -177,8 +192,7 @@ unstow_vimfiles()
 command="cd ${top_dir}/stow"
 print_exec_command "$command"
 
-command="../scripts/stow-home.sh --uninstall vimfiles"
-print_exec_command "$command"
+stow-home.sh --uninstall vimfiles
 
 cd - > /dev/null || exit 1
 }
@@ -225,6 +239,7 @@ for opt in "$@"; do
         -u|--uninstall)
             unstow_vimfiles
             remove_venv
+            remove_export
             remove_vimuserlocalfiles
             unlink_vimfiles
             remove_vimfiles
