@@ -6,7 +6,7 @@ cat << EOF
 Usage: $0 COMMAND
 
 Creates the .Xdefaults file that configures the rxvt terminal, places it in the
-this repos stow/xrvt directory, then links it to the user's home directory using
+this repos stow/rxvt directory, then links it to the user's home directory using
 stow.
 
 COMMANDS:
@@ -20,7 +20,18 @@ EOF
 source globals.sh
 
 #---------- Configure and Install .Xdefaults ----------
-xdefaults=${top_dir}/stow/xrvt/.Xdefaults
+xdefaults=${top_dir}/stow/rxvt/.Xdefaults
+
+check_deps()
+{
+# rxvt comes in varying package names and executable names
+if ! command -v rixvt-unicode &> /dev/null
+then
+    print_error "'rxvt-unicode' could not be found."
+    print_error "It's executable could be under another name and should be linked as rxvt-unicode."
+    exit 1
+fi
+}
 
 create_xdefaults()
 {
@@ -54,7 +65,7 @@ fi
 # Remove the generated .Xdefaults file
 reset_xdefaults()
 {
-cat > ${xdefaults} <<EOF
+cat > "${xdefaults}" <<EOF
 # This file is intentionally blank to reserve it.
 EOF
 }
@@ -73,13 +84,14 @@ for opt in "$@"; do
             exit 0
             ;;
         -i|--install)
+            check_deps
             create_xdefaults
             offer_fontsize
-            stowit "xrvt"
+            stowit "rxvt"
             exit 0
             ;;
         -u|--uninstall)
-            unstowit "xrvt" 
+            unstowit "rxvt" 
             reset_xdefaults
             exit 0
             ;;

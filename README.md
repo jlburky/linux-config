@@ -108,7 +108,6 @@ $ git config --list
 
 ## To Do
 
-* Check that the executable rxvt-unicode exists.
 * Revisit this document.
 * Check if `lua-language-server` submodules already exist, if so, don't update
 * Attempt to dockerize nvim with language server
