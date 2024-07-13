@@ -108,8 +108,6 @@ $ git config --list
 
 ## To Do
 
-* Create bash-config and terminator-config
-* Convert neovim_addons script.
 * Check that the executable rxvt-unicode exists.
 * Revisit this document.
 * Check if `lua-language-server` submodules already exist, if so, don't update
