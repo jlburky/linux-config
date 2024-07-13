@@ -193,21 +193,21 @@ for opt in "$@"; do
             check_deps
             set_repos
             clone_vimfiles
-            link_vimfiles
             clone_vimuserlocalfiles
             export_vimuserlocalfiles
             stowit "bash"
             create_venv
             stowit "vimfiles"
+            link_vimfiles
             print_info "You are now setup to use the features for Vim and Neovim provided by vimfiles."
             exit 0
             ;;
         -u|--uninstall)
+            unlink_vimfiles
             unstowit "vimfiles"
             remove_venv
             remove_export
             remove_vimuserlocalfiles
-            unlink_vimfiles
             remove_vimfiles
             exit 0
             ;;
