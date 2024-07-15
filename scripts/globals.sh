@@ -68,3 +68,15 @@ print_exec_command "${command}"
 
 cd - > /dev/null || exit 1
 }
+
+check_base_deps()
+{
+if ! command -v stow &> /dev/null
+then
+    print_error "'stow' could not be found."
+    print_error "Please install GNU Stow."
+    exit 1
+fi
+}
+
+check_base_deps

@@ -17,7 +17,7 @@ EOF
 }
 
 source globals.sh
-venv_path=${top_dir}/venvs/qtile-venv
+venv_path="${top_dir}/venvs/qtile-venv"
 venv_entry="${top_dir}/stow/qtile/.local/bin/qtile-venv-entry"
 
 # Add any dependencies to check here
