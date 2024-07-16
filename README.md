@@ -141,5 +141,6 @@ $ git config --list
 ## To Do
 
 * Add and test nvim add-ons.
-* Check if `lua-language-server` submodules already exist, if so, don't update
-* Attempt to dockerize nvim with language server
+* Check if `lua-language-server` submodules already exist, if so, don't update.
+* Attempt to dockerize nvim with language server.
+* Add `ranger` install.
