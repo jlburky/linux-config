@@ -39,6 +39,28 @@ if ! command -v "nvim" &> /dev/null
 then
     # Warn, but do not exit since nvim can be installed after
     print_warning "nvim could not be found!"
+    read -rp "Press any key to continue..." ans
+fi
+
+if ! command -v "xclip" &> /dev/null
+then
+    # Warn, but do not exit since nvim can be installed after
+    print_warning "xclip could not be found!"
+    read -rp "Press any key to continue..." ans
+fi
+
+if ! command -v "rg" &> /dev/null
+then
+    # Warn, but do not exit since nvim can be installed after
+    print_warning "rg (ripgrep) could not be found!"
+    read -rp "Press any key to continue..." ans
+fi
+
+if ! command -v "fd" &> /dev/null
+then
+    # Warn, but do not exit since nvim can be installed after
+    print_warning "fd (find alternative) could not be found!"
+    read -rp "Press any key to continue..." ans
 fi
 }
 
