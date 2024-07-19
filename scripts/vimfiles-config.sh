@@ -59,7 +59,14 @@ fi
 if ! command -v "fd" &> /dev/null
 then
     # Warn, but do not exit since nvim can be installed after
-    print_warning "fd (find alternative) could not be found!"
+    print_warning "fd (fd-find, a find alternative) could not be found!"
+    read -rp "Press any key to continue..." ans
+fi
+
+if ! command -v "shellcheck" &> /dev/null
+then
+    # Warn, but do not exit since nvim can be installed after
+    print_warning "shellcheck could not be found!"
     read -rp "Press any key to continue..." ans
 fi
 }
