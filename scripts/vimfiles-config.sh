@@ -34,6 +34,12 @@ then
     print_error "python3.10 could not be found!"
     exit 1
 fi
+
+if ! command -v "nvim" &> /dev/null
+then
+    # Warn, but do not exit since nvim can be installed after
+    print_warning "nvim could not be found!"
+fi
 }
 
 # Provide option to use alternate repos for vimfile and vimuserlocalfiles
