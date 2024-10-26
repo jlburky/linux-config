@@ -29,10 +29,11 @@ available.
 ## Pre-reqs
 
 * Cinnamon Desktop Environment (if preferred to Qtile)
-* dmenu
 * git
 * nvim (Neovim)
 * nvim dependencies
+* `feh`
+* `dmenu`
 * `rxvt-unicode`
 * `rxvt-unicode-256color`
 * Python 3.10 (for Qtile specifically)
@@ -121,6 +122,9 @@ $ stow-home.sh --install <package>
   Cinnamon desktop environment.
 * `configurations/qtile-default-config.py` - default Qtile configuration
   primarily provided for reference.
+* `configurations/qtile-venv.desktop` - system Qtile desktop entry to enter Qtile
+  locally from a workstation versus a remote desktop session.
+  primarily provided for reference.
 * `configurations/Xdefaults.template` - used to create the `.Xdefaults` under
   `stow/rxvt` setting the path to the location of `urxvt-vim-scrollback`.
 * `configurations/xession.cinnamon` - configuration for Cinnamon to start using
@@ -144,3 +148,4 @@ $ git config --list
 * Check if `lua-language-server` submodules already exist, if so, don't update.
 * Attempt to dockerize nvim with language server.
 * Add `ranger` install.
+* Fix '~' directory creation when calling vim

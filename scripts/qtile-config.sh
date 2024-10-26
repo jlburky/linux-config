@@ -79,6 +79,30 @@ command="chmod 755 ${venv_entry}"
 print_exec_command "$command"
 }
 
+link_qtile_desktop()
+{
+# Offer to install system Qtile desktop entry
+read -rp "Do you want install a system Qtile desktop entry to enter Qtile locally? (y/N)" ans
+if [[ "${ans}" == [yY]  ]]; then
+    print_info "Linking system Qtile desktop entry" 
+    command="sudo ln -fs ${top_dir}/configurations/qtile-venv.desktop /usr/share/xsessions/qtile-venv.desktop"
+    print_exec_command "$command"
+else
+    print_info "Skipping system Qtile desktop entry." 
+fi
+}
+
+rm_qtile_desktop()
+{
+desktopfile="/usr/share/xsessions/qtile-venv.desktop"
+# Check if Qtile desktop entry exists
+if [ ! -f ${desktopfile} ]; then
+    print_info "Removing system Qtile desktop entry" 
+    command="sudo rm ${desktopfile}"
+    print_exec_command "$command"
+fi
+}
+
 reset_entry_file()
 {
 print_info "Resetting ${venv_entry}."
@@ -123,6 +147,7 @@ for opt in "$@"; do
             check_deps
             create_venv
             create_entry_file
+            link_qtile_desktop
             stowit "qtile"
             exit 0
             ;;
@@ -130,6 +155,7 @@ for opt in "$@"; do
             unstowit "qtile"
             remove_venv
             reset_entry_file
+            rm_qtile_desktop
             exit 0
             ;;
         -rv|--remove-venv)
