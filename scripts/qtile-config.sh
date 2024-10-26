@@ -96,7 +96,7 @@ rm_qtile_desktop()
 {
 desktopfile="/usr/share/xsessions/qtile-venv.desktop"
 # Check if Qtile desktop entry exists
-if [ ! -f ${desktopfile} ]; then
+if [ -f ${desktopfile} ]; then
     print_info "Removing system Qtile desktop entry" 
     command="sudo rm ${desktopfile}"
     print_exec_command "$command"
