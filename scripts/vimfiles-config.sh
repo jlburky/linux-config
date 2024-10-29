@@ -28,10 +28,10 @@ vimuserlocalfiles_path="${top_dir}/repos/vimuserlocalfiles"
 # Add any dependencies to check here
 check_deps()
 {
-# Check that Python 3.10 exists
-if ! command -v "python3.10" &> /dev/null
+# Check that Python 3 exists
+if ! command -v "python3" &> /dev/null
 then
-    print_error "python3.10 could not be found!"
+    print_error "python3 could not be found!"
     exit 1
 fi
 
