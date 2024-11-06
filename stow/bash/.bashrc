@@ -131,3 +131,7 @@ alias getdirsize='du -hc --max-depth=1'
 if [ -f ~/.bashrc_local ]; then
     . ~/.bashrc_local
 fi
+
+# Add VIMUSERLOCALFILES to path to call create_ctags.sh; call after sourcing
+# bashrc_local
+export PATH="$PATH:$VIMUSERLOCALFILES/"
