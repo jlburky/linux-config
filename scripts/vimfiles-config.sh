@@ -235,6 +235,7 @@ for opt in "$@"; do
             stowit "vimfiles"
             link_vimfiles
             print_info "You are now setup to use the features for Vim and Neovim provided by vimfiles."
+            print_info "Exit this shell and enter a new shell to set environmental variables before launching vim."
             exit 0
             ;;
         -u|--uninstall)
