@@ -26,10 +26,15 @@ section of the documentation. Also, each install script could offer a
 `check_deps()` function to alert the user if a system dependency is not
 available.
 
-## Pre-reqs
+## linux-config Pre-reqs
 
-* Cinnamon Desktop Environment (if preferred to Qtile)
 * git
+* GNU `stow`
+
+
+## My Application's Pre-reqs
+* terminator
+* vim 8.1+ (with: Python 3.6+, `xterm_clipboard`)
 * nvim (Neovim)
 * nvim dependencies
 * `feh`
@@ -37,9 +42,7 @@ available.
 * `rxvt-unicode`
 * `rxvt-unicode-256color`
 * Python 3.10 (for Qtile specifically)
-* GNU `stow`
-* terminator
-* vim 8.1+ (with: Python 3.6+, `xterm_clipboard`)
+* Cinnamon Desktop Environment (when not using Qtile)
 
 ## Getting Started
 
