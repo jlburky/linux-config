@@ -149,4 +149,3 @@ $ git config --list
 * Check if `lua-language-server` submodules already exist, if so, don't update.
 * Attempt to dockerize nvim with language server.
 * Add `ranger` install.
-* Fix '~' directory creation when calling vim
