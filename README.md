@@ -145,6 +145,13 @@ To test your Git configuration,
 $ git config --list
 ```
 
+To view Xsession errors:
+```
+$ less /var/log/xrdp-sesman.log
+```
+
+For remote sessions using Cinnamon, Gnome or KDE use the `Xvnc` session.
+
 ## To Do
 
 * VIMUSERLOCALFILE shouldn't be added to .bashrc_local
