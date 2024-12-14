@@ -135,3 +135,6 @@ fi
 # Add VIMUSERLOCALFILES to path to call create_ctags.sh; call after sourcing
 # bashrc_local
 export PATH="$PATH:$VIMUSERLOCALFILES/"
+
+# Added the following when installing an alternate version of Python
+export LD_LIBRARY_PATH="LD_LIBRARY_PATH:/usr/local/lib/"
