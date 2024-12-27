@@ -76,9 +76,9 @@ Your config can be loaded by Qtile.
 ## Tips and Tricks
 
 For alternate Python version installations on RHEL distros, you may have to add
-the location of `libpythonX.X.so.1.0` to `/etc/ld.so.conf` and run `ldconfig`
-since the Xsession will not source your bashrc and its location may not be known
-to the system depending on the install location.
+the location of `libpythonX.X.so.1.0` as a file in `/etc/ld.so.conf.d/` and run
+`ldconfig` since the Xsession will not source your bashrc and its location may
+not be known to the system depending on the install location.
 
 
 Errors can be found in:
