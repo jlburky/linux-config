@@ -199,6 +199,9 @@ screens = [
             ],
             30,
         ),
+        # Set static wallpaper
+        wallpaper=osp.join(HOME, '.config/qtile/qtile-background.jpg'),
+        wallpaper_mode='fill'
     ),
     Screen(
         # CUSTOM
@@ -235,6 +238,9 @@ screens = [
             ],
             30,
         ),
+        # Set static wallpaper
+        wallpaper=osp.join(HOME, '.config/qtile/qtile-background.jpg'),
+        wallpaper_mode='fill'
     ),
 ]
 
@@ -297,7 +303,9 @@ def startup():
     # jlb: not sure what this did 
     #run('xrandr --output DP1 --primary --mode 1920x1080 --rate 60.00 --output DP2 --mode 1920x1080 --rate 60.00 --right-of DP1')
     
-    run('feh --bg-scale {}'.format(osp.join(HOME, '.config/qtile/qtile-background.jpg')))
+    # jlb: feh was not avaiable in RHEL distro; this lines was removed and the
+    # calls under Screen() to 'wallpaper' and 'wallpaper_mode' were added.
+    #run('feh --bg-scale {}'.format(osp.join(HOME, '.config/qtile/qtile-background.jpg')))
 
     # Write the logging tree to a file.
     #with open(".config/qtile/logging_tree.txt", 'w') as f:

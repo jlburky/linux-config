@@ -37,7 +37,6 @@ available.
 * vim 8.1+ (with: Python 3.6+, `xterm_clipboard`)
 * nvim (Neovim)
 * nvim dependencies
-* `feh`
 * `dmenu`
 * `rxvt-unicode`
 * `rxvt-unicode-256color`

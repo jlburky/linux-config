@@ -30,13 +30,6 @@ then
     exit 1
 fi
 
-# Check that feh executable exists
-if ! command -v "feh" &> /dev/null
-then
-    print_error "feh could not be found!"
-    exit 1
-fi
-
 # Check that dmenu executable exists
 if ! command -v "dmenu" &> /dev/null
 then

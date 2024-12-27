@@ -55,6 +55,7 @@ in the `install_qtile.sh` script.
 (venv)$ pip install cairocffi==1.7.0
 (venv)$ pip install mypy==1.10.0
 (venv)$ pip install qtile==0.24.0
+(venv)$ pip install dbus-next==0.2.3
 ```
 
 Now check for issues. Start with a simple call to the help menu.
@@ -72,4 +73,14 @@ Config file type checking succeeded!
 Your config can be loaded by Qtile.
 ```
 
-Errors can be found in `~/.local/share/qtile.log`.
+## Tips and Tricks
+
+For alternate Python version installations on RHEL distros, you may have to add
+the location of `libpythonX.X.so.1.0` to `/etc/ld.so.conf` and run `ldconfig`
+since the Xsession will not source your bashrc and its location may not be known
+to the system depending on the install location.
+
+
+Errors can be found in:
+* `~/.xession-errors`
+* `~/.local/share/qtile.log`.
