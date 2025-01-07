@@ -45,28 +45,28 @@ fi
 if ! command -v "xclip" &> /dev/null
 then
     # Warn, but do not exit since nvim can be installed after
-    print_warning "xclip could not be found!"
+    print_warning "Nvim utility, xclip, could not be found!"
     read -rp "Press any key to continue..." ans
 fi
 
 if ! command -v "rg" &> /dev/null
 then
     # Warn, but do not exit since nvim can be installed after
-    print_warning "rg (ripgrep) could not be found!"
+    print_warning "Nvim utility, rg (ripgrep), could not be found!"
     read -rp "Press any key to continue..." ans
 fi
 
-if ! command -v "fd" &> /dev/null
+if ! command -v "fdfind" &> /dev/null
 then
     # Warn, but do not exit since nvim can be installed after
-    print_warning "fd (fd-find, a find alternative) could not be found!"
+    print_warning "Nvim utility, fdfind (fd-find), could not be found!"
     read -rp "Press any key to continue..." ans
 fi
 
 if ! command -v "shellcheck" &> /dev/null
 then
     # Warn, but do not exit since nvim can be installed after
-    print_warning "shellcheck could not be found!"
+    print_warning "Nvim utility, shellcheck, could not be found!"
     read -rp "Press any key to continue..." ans
 fi
 }
