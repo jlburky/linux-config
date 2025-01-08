@@ -88,7 +88,12 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     bind("shift + Return", lazy.layout.toggle_split()),
+
+    # Launch new rxvt terminal
     bind("Return", lazy.spawn("rxvt-unicode")),
+
+    # Launch new kitty terminal
+    bind("n", lazy.spawn("kitty")),
 
     # Toggle between different layouts as defined below
     bind("Tab", lazy.next_layout()),
