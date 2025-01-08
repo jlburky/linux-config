@@ -5,8 +5,11 @@ usage()
 cat << EOF
 Usage: $0 [options]
 
-# Installs and configures additions for neovim beyond that provided by Doc 
-# Mike's vimfiles.
+Installs and configures additions for neovim beyond that provided by Doc 
+Mike's vimfiles. This includes:
+- bash language server
+- TODO: add to list
+
 
 OPTIONS:
 -h, --help          This message.
