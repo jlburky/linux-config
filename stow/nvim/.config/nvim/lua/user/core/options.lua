@@ -3,13 +3,7 @@ vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
 
--- Colorscheme and display
---vim.cmd("colorscheme iceberg")
---require('nightfox').load('nordfox')
---vim.cmd("colorscheme nordfox")
---require('nightfox').load('nightfox')
---vim.cmd("colorscheme nightfox")
--- vim.cmd("colorscheme sonokai")
+-- Display
 opt.signcolumn = "yes" -- shown sign column so text doesn't shift
 opt.background = "dark" -- always choose dark colorscheme option
 opt.termguicolors = true -- enable nvim truecolor (true) or 256 (false)
