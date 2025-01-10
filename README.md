@@ -5,6 +5,7 @@
 Configuring your Linux environment can get complicated. This project attempts to
 make installing and replicating your development environment easier by following
 these principles:
+
 * Keep all your Linux environment configurations in one place. This includes
   configuration files, external repos, virtual environments and installation
   scripts. 
@@ -31,8 +32,8 @@ available.
 * git
 * GNU `stow`
 
-
 ## My Application's Pre-reqs
+
 * terminator
 * vim 8.1+ (with: Python 3.6+, `xterm_clipboard`)
 * nvim (Neovim)
@@ -111,15 +112,16 @@ $ stow-home.sh --install <package>
 * `stow/qtile/.config/qtile/config.py` - my custom Qtile configuration. 
 * `stow/qtile/.config/qtile/qtile-background.jpg` - background image used in my
   Qtile configuration.
-* `stow/qtile/.local/bin/qtile-venv-entry` - glue shell script that is called to
-  start Qtile in a virtual environment; populated by installation script.
+* `stow/qtile/.local/bin/qtile-venv-entry` - glue shell script that is called
+  to start Qtile in a virtual environment; populated by installation script.
 * `stow/qtile/.xsession` - default configuration for Qtile to start under Remote
   Desktop (RDP).
 * `stow/terminator/.config/terminator/config` - configuration for the Terminator
   terminal emulator.
-* `stow/vimfiles/.config/nvim/init.vim` - initializations to configure Nvim to
-  use Doc Mike's vimfiles.
-* `stow/vimfiles/.vimrc` - Vim initialization file configured to use runtime Vim.
+* `stow/nvim/.config/nvim/` - stand-alone configurations (independent of Vim)
+  for Nvim.
+* `stow/vimfiles/.vimrc` - Vim initialization file configured to use runtime
+  Vim.
 * `configurations/keybindings.dconf` - the custom keybindings used in the
   Cinnamon desktop environment.
 * `configurations/qtile-default-config.py` - default Qtile configuration
@@ -153,8 +155,6 @@ For remote sessions using Cinnamon, Gnome or KDE use the `Xvnc` session.
 
 ## To Do
 
-* VIMUSERLOCALFILE shouldn't be added to .bashrc_local
 * Add and test nvim add-ons.
 * Check if `lua-language-server` submodules already exist, if so, don't update.
 * Attempt to dockerize nvim with language server.
-* Add `ranger` install.
