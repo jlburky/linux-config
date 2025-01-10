@@ -12,11 +12,5 @@ require("user.lazy")
 --    utils.floatwin(rtpList)
 --end
 
--- Everything below requires more than just the vimfiles' nvim-bundle
---require('user.telescope.init')
---
----- nvim-tree setup
---require('user.nvim-tree.init')
---
 ---- Set Vim's notify function to use notify-nvim
 --vim.notify = require('notify')
