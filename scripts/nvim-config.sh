@@ -110,6 +110,20 @@ if [ -h "${venv_link}" ]; then
 fi
 }
 
+install_fonts()
+{
+    stowit "fonts"
+    command="fc-cache -fv"
+    print_exec_command "$command"
+}
+
+uninstall_fonts()
+{
+    unstowit "fonts"
+    command="fc-cache -fv"
+    print_exec_command "$command"
+}
+
 # Check for max num of options
 numargs=1
 if [ "$#" -ne $numargs ]; then
@@ -126,14 +140,16 @@ for opt in "$@"; do
             ;;
         -i|--install)
             check_deps
-            #create_venv
+            create_venv
             stowit "nvim"
+            install_fonts
             print_info "You are now setup to use the features Neovim."
             exit 0
             ;;
         -u|--uninstall)
             unstowit "nvim"
-            #remove_venv
+            uninstall_fonts
+            remove_venv
             exit 0
             ;;
         *)

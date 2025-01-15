@@ -43,7 +43,20 @@ if [[ "${ans}" == [yY]  ]]; then
     print_info "Done!"
 fi
 }
- 
+
+install_fonts()
+{
+    stowit "fonts"
+    command="fc-cache -fv"
+    print_exec_command "$command"
+}
+
+uninstall_fonts()
+{
+    unstowit "fonts"
+    command="fc-cache -fv"
+    print_exec_command "$command"
+}
 
 # Check for max num of options
 numargs=1
@@ -61,11 +74,13 @@ for opt in "$@"; do
         -i|--install)
             check_deps
             offer_fontsize
-            stowit "kitty"
+            stowit "kitty" 
+            install_fonts
             exit 0
             ;;
         -u|--uninstall)
             unstowit "kitty" 
+            uninstall_fonts
             exit 0
             ;;
         *)
