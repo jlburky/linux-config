@@ -63,11 +63,24 @@ then
 fi
 }
 
-# Drop pynvim in stow/nvim directory to that it will be linked to
-# ~/venvs/pynvim as expected in nvim/vimrc
-venv_path="${top_dir}/stow/nvim/venvs/pynvim"
-venv_link="${top_dir}/venvs/pynvim"
+# Set default repos 
+lazy_repo="https://github.com/folke/lazy.nvim.git"
+lazy_file="${top_dir}/stow/nvim/.config/nvim/lua/user/lazy.lua"
 
+set_repos()
+{
+read -rp "Change default lazy repo: ${lazy_repo}? (y/N)" ans
+if [[ "${ans}" == [yY]  ]]; then
+    read -rp "Enter new lazy repo location: " newrepo 
+    vimfiles_repo=${newrepo}
+fi
+
+# Update the lazy repo in the lazy.lua file
+command="sed -i 's@${lazy_repo}@${newrepo}@g' ${lazy_file}"
+print_exec_command "$command"
+}
+
+venv_path="${top_dir}/venvs/pynvim"
 create_venv()
 {
 # Create the Python virtual enviroment
@@ -87,10 +100,6 @@ else
     print_exec_command "${command}"
     
     deactivate
-
-    # Add link in venvs directory to track it as a virtual environment 
-    command="ln -fs ${venv_path} ${venv_link}"
-    print_exec_command "${command}"
 fi
 }
 
@@ -99,11 +108,6 @@ remove_venv()
 if [ -d "${venv_path}" ]; then
     print_info "Removing virtual environment at ${venv_path}."
     command="rm -rf ${venv_path}"
-    print_exec_command "${command}"
-fi
-
-if [ -h "${venv_link}" ]; then
-    command="rm -rf ${venv_link}"
     print_exec_command "${command}"
 fi
 }
@@ -151,6 +155,7 @@ for opt in "$@"; do
             ;;
         -i|--install)
             check_deps
+            set_repos
             create_venv
             set_nvim_alias
             stowit "nvim"
