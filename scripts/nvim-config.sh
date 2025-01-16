@@ -63,13 +63,11 @@ then
 fi
 }
 
-# Drop pynvim in stow/vimfiles directory to that it will be linked to
-# ~/venvs/pynvim as expected in vimfiles/vimrc
-venv_path="${top_dir}/stow/vimfiles/venvs/pynvim"
+# Drop pynvim in stow/nvim directory to that it will be linked to
+# ~/venvs/pynvim as expected in nvim/vimrc
+venv_path="${top_dir}/stow/nvim/venvs/pynvim"
 venv_link="${top_dir}/venvs/pynvim"
 
-# TODO: leaving this here, though it's not used yet, anticipating I will want to
-# use it.
 create_venv()
 {
 # Create the Python virtual enviroment
@@ -110,13 +108,27 @@ if [ -h "${venv_link}" ]; then
 fi
 }
 
+bashrc_local="${top_dir}/stow/bash/.bashrc_local"
+set_nvim_alias()
+{
+print_info "Adding nvim alias using venv to your ${bashrc_local}."
+echo "alias nvim='source ${venv_path}/bin/activate && nvim'" >> "${bashrc_local}"
+}
+
+remove_nvim_alias()
+{
+command="sed -i '/alias nvim/d' ${bashrc_local}"
+print_exec_command "${command}"
+}
+
 install_fonts()
 {
     stowit "fonts"
-    command="fc-cache -fv"
+    command="fc-cache -fv > /dev/null"
     print_exec_command "$command"
 }
 
+# No need to use the function below, but here nevertheless
 uninstall_fonts()
 {
     unstowit "fonts"
@@ -130,7 +142,6 @@ if [ "$#" -ne $numargs ]; then
     usage
     exit 1
 fi
-
 # Gather options
 for opt in "$@"; do
     case ${opt} in
@@ -141,6 +152,7 @@ for opt in "$@"; do
         -i|--install)
             check_deps
             create_venv
+            set_nvim_alias
             stowit "nvim"
             install_fonts
             print_info "You are now setup to use the features Neovim."
@@ -148,12 +160,12 @@ for opt in "$@"; do
             ;;
         -u|--uninstall)
             unstowit "nvim"
-            uninstall_fonts
+            remove_nvim_alias
             remove_venv
             exit 0
             ;;
         *)
-            echo "Invalid option."
+            echo "Invalid option: ${opt}."
             exit 1
             ;;
      esac

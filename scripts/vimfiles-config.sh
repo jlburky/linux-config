@@ -107,6 +107,12 @@ print_info "Exporting VIMUSERLOCALFILES to this repo in your ${bashrc_local}."
 echo "export VIMUSERLOCALFILES=\"${vimuserlocalfiles_path}\"" >> "${bashrc_local}"
 }
 
+remove_export()
+{
+command="sed -i '/VIMUSERLOCALFILES/d' ${bashrc_local}"
+print_exec_command "${command}"
+}
+
 remove_vimuserlocalfiles()
 {
 if [ -d "${vimuserlocalfiles_path}" ]; then
@@ -114,12 +120,6 @@ if [ -d "${vimuserlocalfiles_path}" ]; then
     command="rm -rf ${vimuserlocalfiles_path}"
     print_exec_command "${command}"
 fi
-}
-
-remove_export()
-{
-command="sed -i '/VIMUSERLOCALFILES/d' ${bashrc_local}"
-print_exec_command "${command}"
 }
 
 # Check for max num of options
@@ -145,7 +145,7 @@ for opt in "$@"; do
             stowit "bash"
             stowit "vimfiles"
             link_vimfiles
-            print_info "You are now setup to use the features for Vim and Neovim provided by vimfiles."
+            print_info "You are now setup to use the features for Vim provided by vimfiles."
             print_info "Exit this shell and enter a new shell to set environmental variables before launching vim."
             exit 0
             ;;

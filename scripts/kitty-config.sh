@@ -51,6 +51,7 @@ install_fonts()
     print_exec_command "$command"
 }
 
+# No need to use the function below, but here nevertheless
 uninstall_fonts()
 {
     unstowit "fonts"
@@ -80,7 +81,6 @@ for opt in "$@"; do
             ;;
         -u|--uninstall)
             unstowit "kitty" 
-            uninstall_fonts
             exit 0
             ;;
         *)

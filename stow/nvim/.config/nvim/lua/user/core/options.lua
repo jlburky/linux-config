@@ -1,6 +1,9 @@
 -- To view detail about any option, type ":h <option>
 vim.cmd("let g:netrw_liststyle = 3")
 
+-- May want to set this eventually...
+--vim.cmd("let g:python3_host_prog = '/path/to/venvs/pynvim/bin/python'")
+
 local opt = vim.opt
 
 -- Display
