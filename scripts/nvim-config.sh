@@ -72,12 +72,12 @@ set_repos()
 read -rp "Change default lazy repo: ${lazy_repo}? (y/N)" ans
 if [[ "${ans}" == [yY]  ]]; then
     read -rp "Enter new lazy repo location: " newrepo 
-    vimfiles_repo=${newrepo}
-fi
+    lazy_repo=${newrepo}
 
-# Update the lazy repo in the lazy.lua file
-command="sed -i 's@${lazy_repo}@${newrepo}@g' ${lazy_file}"
-print_exec_command "$command"
+    # Update the lazy repo in the lazy.lua file
+    command="sed -i 's@${lazy_repo}@${newrepo}@g' ${lazy_file}"
+    print_exec_command "$command"
+fi
 }
 
 venv_path="${top_dir}/venvs/pynvim"
