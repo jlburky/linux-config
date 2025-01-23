@@ -3,6 +3,48 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   config = function()
     local nvimtree = require("nvim-tree")
+    local devicons = require("nvim-web-devicons")
+
+    -- Change some icons; enter :NvimWebDeviconsHiTest to view icons
+    devicons.set_default_icon('', '#6d8086', 65)
+    devicons.set_icon {
+        ["dockerfile"] = {
+          icon = "",
+          color = "#458ee6",
+          cterm_color = "68",
+          name = "Dockerfile",
+        },
+        readme = {
+          icon = "",
+          color = "#ededed",
+          cterm_color = "255",
+          name = "Readme",
+        },
+        ["readme.md"] = {
+          icon = "",
+          color = "#ededed",
+          cterm_color = "255",
+          name = "Readme",
+        },
+        sh= {
+          icon = "",
+          color = "#a2518d",
+          cterm_color = "132",
+          name = "Sh"
+        },
+        vhd = {
+          icon = "",
+          color = "#428850",
+          cterm_color = "65",
+          name = "VHDL"
+        },
+        vhdl = {
+          icon = "",
+          color = "#428850",
+          cterm_color = "65",
+          name = "VHDL"
+        }
+    }
 
     -- recommended settings from nvim-tree documentation
     vim.g.loaded_netrw = 1
