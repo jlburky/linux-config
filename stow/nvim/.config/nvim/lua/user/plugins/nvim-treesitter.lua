@@ -27,6 +27,7 @@ return {
         "lua",
         "make",
         "markdown",
+        "markdown_inline",
         "matlab",
         "python",
         "query",
@@ -38,7 +39,6 @@ return {
         "xml",
         "yaml",
       },
-
       incremental_selection = {
         enable = true,
         keymaps = {

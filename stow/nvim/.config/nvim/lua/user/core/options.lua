@@ -30,3 +30,6 @@ opt.wrap = false -- I may want this to true
 
 -- Clipboard
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+
+-- Maintain file history even after it's closed
+opt.undofile = true
