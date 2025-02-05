@@ -7,7 +7,7 @@ Usage: $0 COMMAND
 
 Configures nvim using stand-alone configuration, separate from vim.
 
-COMMANDS:
+COMMANDS: 
 -h, --help          This message.
 -i, --install       Install nvim configs.
 -u, --uninstall     Uninstall all configs executed by this script.
@@ -57,9 +57,19 @@ fi
 
 if ! command -v "shellcheck" &> /dev/null
 then
-    # Warn, but do not exit since nvim can be installed after
-    print_warning "Nvim utility, shellcheck (ShellCheck), could not be found!"
-    read -rp "Press any key to continue..." ans
+    # warn, but do not exit since nvim can be installed after
+    print_warning "nvim utility, shellcheck (shellcheck), could not be found!"
+    read -rp "press any key to continue..." ans
+fi
+
+if ! command -v "npm" &> /dev/null
+then
+    # warn, but do not exit since nvim can be installed after
+    # To get the bash-language-server installed correctly, I had to install
+    # npm manually following the instructions from:
+    # https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl#install-nvm-nodejs-and-npm
+    print_warning "nvim utility used to install language serveres, npm, could not be found!"
+    read -rp "press any key to continue..." ans
 fi
 }
 

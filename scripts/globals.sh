@@ -23,15 +23,15 @@ CYN='\e[36m'
 NC='\033[0m'  # no color
 
 print_info() {
-    echo -e ${1}
+    echo -e "${1}"
 }
 
 print_warning() {
-    echo -e ${YEL}${1}${NC}
+    echo -e "${YEL}${1}${NC}"
 }
 
 print_error() {
-    echo -e ${RED}${1}${NC}
+    echo -e "${RED}${1}${NC}"
 }
 
 print_command() {
