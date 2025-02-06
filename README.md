@@ -43,6 +43,7 @@ available.
 * `rxvt-unicode-256color`
 * Python 3.10 (for Qtile specifically)
 * Cinnamon Desktop Environment (when not using Qtile)
+* Possible more...
 
 ## Getting Started
 
@@ -58,13 +59,13 @@ $ git-config --install
 
 ### Install Scripts
 
-In the `scripts` directory, are scripts for each installation ending in
-`-config`. Run the script with the `--help` option to get a description and
-usage. All scripts offer an `--install` and `--uninstall` command. They may also
-offer additional commands. All scripts must be run from this directory. If it
-exists, the prefix of the script will match
-to the corresponding stow package (e.g. `stow/git` <=> `scripts/git-config.sh`)
-and the script will handle the calls to "stow"/link your config files.
+In the `scripts` directory, are scripts (ending in `-config`) for each
+installation. Run the script with the `--help` option to get a description and
+usage. All scripts offer an `--install` and `--uninstall` command. They may
+also offer additional commands. All scripts must be run from this directory. If
+it exists, the prefix of the script will match to the corresponding stow
+package (e.g. `stow/git` <=> `scripts/git-config.sh`) and the script will
+handle the calls to "stow"/link your config files.
 
 Because it is complicated, details specifically on the installation of Qtile
 [are here](QTILE.md), though the installation script, `qtile-config.sh`, should
@@ -92,7 +93,7 @@ $ stow-home.sh --install <package>
 * `configurations` - files and directories that don't map directly to a user's
   `$HOME` directory.
 * `scripts` - scripts to automate the installation of configs (ending in
-  `-config` and some help scripts as well.
+  `-config` and some helper scripts as well.
   additional.
 * `repos` - stores external cloned (not stored in this repo) or forked (store in
   this repo) repos.
@@ -120,15 +121,15 @@ $ stow-home.sh --install <package>
   terminal emulator.
 * `stow/nvim/.config/nvim/` - stand-alone configurations (independent of Vim)
   for Nvim.
+* `stow/nvim/.local/nvim/` - stores Nvim plugins and data not under version control.
 * `stow/vimfiles/.vimrc` - Vim initialization file configured to use runtime
   Vim.
 * `configurations/keybindings.dconf` - the custom keybindings used in the
   Cinnamon desktop environment.
 * `configurations/qtile-default-config.py` - default Qtile configuration
-  primarily provided for reference.
+  primarily stored for reference.
 * `configurations/qtile-venv.desktop` - system Qtile desktop entry to enter Qtile
   locally from a workstation versus a remote desktop session.
-  primarily provided for reference.
 * `configurations/Xdefaults.template` - used to create the `.Xdefaults` under
   `stow/rxvt` setting the path to the location of `urxvt-vim-scrollback`.
 * `configurations/xession.cinnamon` - configuration for Cinnamon to start using

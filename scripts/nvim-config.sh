@@ -28,37 +28,37 @@ then
 fi
 
 # Check that Python 3 exists
-if ! command -v "python3" &> /dev/null
+if ! command -v "python3.10" &> /dev/null
 then
-    print_error "python3 could not be found!"
+    print_error "python3.10 could not be found!"
     exit 1
 fi
 
 if ! command -v "xclip" &> /dev/null
 then
     # Warn, but do not exit since nvim can be installed after
-    print_warning "Nvim utility, xclip, could not be found!"
+    print_warning "Recommeneded Nvim utility, xclip, could not be found!"
     read -rp "Press any key to continue..." ans
 fi
 
 if ! command -v "rg" &> /dev/null
 then
     # Warn, but do not exit since nvim can be installed after
-    print_warning "Nvim utility, rg (ripgrep), could not be found!"
+    print_warning "Recommeneded Nvim utility, rg (ripgrep), could not be found!"
     read -rp "Press any key to continue..." ans
 fi
 
 if ! command -v "fdfind" &> /dev/null
 then
     # Warn, but do not exit since nvim can be installed after
-    print_warning "Nvim utility, fdfind (fd-find), could not be found!"
+    print_warning "Recommended Nvim utility, fdfind (fd-find), could not be found!"
     read -rp "Press any key to continue..." ans
 fi
 
 if ! command -v "shellcheck" &> /dev/null
 then
     # warn, but do not exit since nvim can be installed after
-    print_warning "nvim utility, shellcheck (shellcheck), could not be found!"
+    print_warning "Recommended nvim utility, shellcheck (shellcheck), could not be found!"
     read -rp "press any key to continue..." ans
 fi
 
@@ -68,7 +68,7 @@ then
     # To get the bash-language-server installed correctly, I had to install
     # npm manually following the instructions from:
     # https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl#install-nvm-nodejs-and-npm
-    print_warning "nvim utility used to install language serveres, npm, could not be found!"
+    print_warning "Nvim utility used to install language servers, npm, could not be found!"
     read -rp "press any key to continue..." ans
 fi
 }

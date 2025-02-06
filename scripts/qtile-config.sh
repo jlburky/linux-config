@@ -142,6 +142,8 @@ for opt in "$@"; do
             create_entry_file
             link_qtile_desktop
             stowit "qtile"
+            print_info "You are now setup to use Qtile. Logout and then login
+            using either RDP or your desktop manager (if installed)." 
             exit 0
             ;;
         -u|--uninstall)
