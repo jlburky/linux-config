@@ -156,6 +156,4 @@ For remote sessions using Cinnamon, Gnome or KDE use the `Xvnc` session.
 
 ## To Do
 
-* Add and test nvim add-ons.
-* Check if `lua-language-server` submodules already exist, if so, don't update.
-* Attempt to dockerize nvim with language server.
+* Nothing.
