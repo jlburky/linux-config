@@ -49,6 +49,8 @@ return {
             "--glob=!**/.git/*",
             "--glob=!**/build/*",
             "--glob=!**/dist/*",
+            "--ignore-file",
+            ".gitignore"
           },
         },
       },
