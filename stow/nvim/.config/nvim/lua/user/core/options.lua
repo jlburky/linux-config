@@ -26,7 +26,10 @@ opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you used mixed-case, case-sensitive
 
 -- Line wrapping
-opt.wrap = false -- I may want this to true
+opt.wrap = true -- line wrapping
+opt.textwidth = 100 -- wrap at 100 column
+opt.wrapmargin = 0 -- not exactly sure why this is needed
+opt.linebreak = true -- break on word not character
 
 -- Clipboard
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
