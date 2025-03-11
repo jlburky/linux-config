@@ -126,6 +126,8 @@ export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:$HOME/
 # My custom aliases common across all dev environements
 alias wss='cd $HOME/Workspaces'
 alias getdirsize='du -hc --max-depth=1'
+alias icat='kitty +kitten icat'
+alias cp_pwd='pwd | xclip -selection clipboard'
 
 # My customizations local to this dev environment 
 if [ -f ~/.bashrc_local ]; then
