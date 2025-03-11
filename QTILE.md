@@ -8,6 +8,7 @@ details, for getting Qtile v0.24.0 working.
   * `python3.10-dev` (Debian)/`python3.10-devel` (Red Hat)
 * `libffi-dev` (Debian)/`libffi-devel` (Red Hat)
 * `libxkbcommon-x11-dev` (Debian)/`libxkbcommon-x11-devel` (Red Hat)
+* `libncurses5-dev` (Debian)/`ncurses-devel` (Red Hat)
 * Probably more packages not listed here
 * Python module `xcffib` 1.5.0
 * Python module `cffi` 1.16.0
@@ -80,7 +81,9 @@ the location of `libpythonX.X.so.1.0` as a file in `/etc/ld.so.conf.d/` and run
 `ldconfig` since the Xsession will not source your bashrc and its location may
 not be known to the system depending on the install location.
 
-
 Errors can be found in:
 * `~/.xession-errors`
 * `~/.local/share/qtile.log`.
+
+If you build and install an alternate Python version and haven't install `ncurses` 
+development package, the Python curses module may not import. To test, `import curses`.
