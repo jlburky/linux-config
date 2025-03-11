@@ -152,6 +152,11 @@ To view Xsession errors:
 $ less /var/log/xrdp-sesman.log
 ```
 
+To configure the xrdp menu:
+```
+sudo vim /etc/xrdp/xrdp.ini
+```
+
 For remote sessions using Cinnamon, Gnome or KDE use the `Xvnc` session.
 
 ## To Do
