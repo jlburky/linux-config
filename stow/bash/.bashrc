@@ -128,6 +128,7 @@ alias wss='cd $HOME/Workspaces'
 alias getdirsize='du -hc --max-depth=1'
 alias icat='kitty +kitten icat'
 alias cp_pwd='pwd | xclip -selection clipboard'
+alias less='less -R'
 
 # My customizations local to this dev environment 
 if [ -f ~/.bashrc_local ]; then
