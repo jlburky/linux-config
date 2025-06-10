@@ -101,6 +101,22 @@ return {
           },
         })
       end,
+      -- Configurations for PyLSP
+      ["pylsp"] = function()
+        lspconfig["pylsp"].setup({
+          capabilities = capabilities,
+          settings = {
+            pylsp = {
+              plugins = {
+                pycodestyle = {
+                  enable = true,
+                  maxLineLength = 100,
+                },
+              },
+            },
+          },
+        })
+      end,
     })
   end,
 }
