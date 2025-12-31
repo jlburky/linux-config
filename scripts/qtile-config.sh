@@ -36,10 +36,10 @@ done
 if [[ -z "$python_exe" ]]; then
   print_error "No suitable Python found"
   exit 1
+fi
 
 # Check that dmenu executable exists
-if ! command -v "dmenu" &> /dev/null
-then
+if ! command -v "dmenu" &> /dev/null; then
     print_error "dmenu could not be found!"
     exit 1
 fi
