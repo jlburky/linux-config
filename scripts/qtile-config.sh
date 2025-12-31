@@ -23,12 +23,19 @@ venv_entry="${top_dir}/stow/qtile/.local/bin/qtile-venv-entry"
 # Add any dependencies to check here
 check_deps()
 {
-# Check that Python 3.10 exists
-if ! command -v "python3.10" &> /dev/null
-then
-    print_error "python3.10 could not be found!"
-    exit 1
-fi
+python_candidates="python3.12 python3.11 python3.10"
+
+# Check that a valid Python version exists
+for py in $python_candidates; do
+    if command -v "$py" >/dev/null 2>&1; then
+        python_exe="$py"
+        break
+    fi
+done
+
+if [[ -z "$python_exe" ]]; then
+  print_error "No suitable Python found"
+  exit 1
 
 # Check that dmenu executable exists
 if ! command -v "dmenu" &> /dev/null
@@ -42,7 +49,7 @@ create_venv()
 {
 # Create the Python virtual enviroment
 print_info "Creating the Qtile venv at:\n${venv_path}."
-command="python3.10 -m venv ${venv_path}"
+command="${python_exe} -m venv ${venv_path}"
 print_exec_command "$command"
 
 # Activate the virtual enviroment
