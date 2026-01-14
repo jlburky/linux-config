@@ -19,7 +19,7 @@ EOF
 source globals.sh
 
 # Set the location of the .gitconfig_local
-git_config_local=${top_dir}/stow/git/.gitconfig_local
+git_config_local=${HOME}/.gitconfig_local
 
 # Set the user's name in the .gitconfig
 set_username()
@@ -50,13 +50,6 @@ else
 fi
 }
 
-remove_git_local()
-{
-command="rm -f ${git_config_local}"
-print_exec_command "${command}"
-
-}
-
 # Check for max num of options
 numargs=1
 if [ "$#" -ne ${numargs} ]; then
@@ -80,7 +73,6 @@ for opt in "$@"; do
             ;;
         -u|--uninstall)
             unstowit "git"
-            remove_git_local
             exit 0
             ;;
         *)
