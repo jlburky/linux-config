@@ -27,11 +27,17 @@ then
     read -rp "Press any key to continue..." ans
 fi
 
-# Check that Python 3 exists
-if ! command -v "python3.10" &> /dev/null
-then
-    print_error "python3.10 could not be found!"
-    exit 1
+# Check that a valid Python 3 version exists
+for py in $python_candidates; do
+    if command -v "$py" >/dev/null 2>&1; then
+        python_exe="$py"
+        break
+    fi
+done
+
+if [[ -z "$python_exe" ]]; then
+  print_error "No suitable Python found"
+  exit 1
 fi
 
 if ! command -v "xclip" &> /dev/null
@@ -98,7 +104,7 @@ if [ -d "${venv_path}" ]; then
     print_info "${venv_path} already exists, skipping."
 else
     print_info "Creating the venv to support nvim at:\n${venv_path}"
-    command="python3.10 -m venv ${venv_path}"
+    command="${python_exe} -m venv ${venv_path}"
     print_exec_command "${command}"
     
     # Activate the virtual enviroment
