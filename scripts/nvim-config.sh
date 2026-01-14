@@ -28,6 +28,8 @@ then
 fi
 
 # Check that a valid Python 3 version exists
+python_candidates="python3.12 python3.11 python3.10"
+
 for py in $python_candidates; do
     if command -v "$py" >/dev/null 2>&1; then
         python_exe="$py"
