@@ -112,9 +112,13 @@ else
     # Activate the virtual enviroment
     source "${venv_path}/bin/activate"
     
-    # Install the dependencies using the requirements-frozen.txt
+    # Install the dependencies
     print_info "Installing pynvim to ${venv_path}."
     command="pip install pynvim"
+    print_exec_command "${command}"
+
+    print_info "Installing python-lsp-server to ${venv_path}."
+    command="pip install \"python-lsp-server[all]\""
     print_exec_command "${command}"
     
     deactivate
