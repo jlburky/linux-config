@@ -1,42 +1,52 @@
 #!/bin/bash
 
-usage()
+# Exit on error, undefined variables, and pipe failures
+set -euo pipefail
+
+usage() 
 {
 cat << EOF
-Usage: $0 OLDUSER NEWUSER
+Usage: $(basename "$0") OLDUSER NEWUSER
 
-Finds any links that contain the OLDUSER name in the path, then recreates the link 
-replacing it with the NEWUSER name.
+Finds symbolic links containing OLDUSER in their target path and 
+updates them to point to NEWUSER.
 
 EOF
 }
 
-olduser=$1
-newuser=$2
-
-# Check the max number of options
-numargs=2
-if [ "$# -ne "${numargs}" ]; then
+# Check correct number of args
+if [[ $# -ne 2 ]]; then
     usage
     exit 1
 fi
 
-# Find any links under the current directory that contain the OLDUSER
-# in the path
-oldlinks=$(find ./ l -lname "*${olduser}*" -printf '%p:%l\n')
-for link in ${oldlinks}; do
-    linkname=$(echo "$link" | cut -d ':' -f1)
-    path=$(echo "$link" | cut -d ':' -f2)
+olduser="$1"
+newuser="$2"
 
-    # Remove the old link
-    rm "$linkname"
-
-    # Create the new link replacing OLDUSER with NEWUSER
-    echo "Creating link: $linkname -> ${path//$olduser/$newuser}"
-    ln -s "${path//$olduser/$newuser}" "$linkname"
-done
-
-echo "Success!"
-
-
+# Use 'read' with a null delimiter to handle spaces and special characters
+# -type l: ensures we only process symbolic links
+# -printf '%p\0%l\0': outputs link name and target separated by null bytes
+found_any=false
+while IFS= read -r -d '' linkname && IFS= read -r -d '' target; do
+    found_any=true
     
+    # Replace OLDUSER with NEWUSER in the target path
+    new_target="${target//$olduser/$newuser}"
+
+    # Only proceed if the target actually changed
+    if [[ "$target" != "$new_target" ]]; then
+        echo "Updating: $linkname"
+        echo "  From: $target"
+        echo "  To:   $new_target"
+
+        # 3. Use 'ln -sf' to atomically update the link 
+        # This is safer than 'rm' followed by 'ln'
+        ln -sf "$new_target" "$linkname"
+    fi
+done < <(find . -type l -lname "*${olduser}*" -printf '%p\0%l\0')
+
+if [ "$found_any" = true ]; then
+    echo "Success!"
+else
+    echo "No links found containing '$olduser'."
+fi
