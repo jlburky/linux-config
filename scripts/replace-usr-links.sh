@@ -8,6 +8,10 @@ usage()
 cat << EOF
 Usage: $(basename "$0") OLDUSER NEWUSER
 
+Use this script after dropping the nvim bundle,
+  nvim-lazy-mason-bundle-x.x.x.ver.tar,
+into $HOME/.local/share/nvim .
+
 Finds symbolic links containing OLDUSER in their target path and 
 updates them to point to NEWUSER.
 
@@ -50,3 +54,6 @@ if [ "$found_any" = true ]; then
 else
     echo "No links found containing '$olduser'."
 fi
+
+# Find all the files that contain '/home/OLDUSER' and replace with '/home/NEWUSER'
+find . -type f -exec sed -i "s|/home/${olduser}/|/home/${newuser}/|g" {} +
