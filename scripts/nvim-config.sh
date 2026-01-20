@@ -125,6 +125,17 @@ else
 fi
 }
 
+remove_nvim_bundle()
+{
+bundle_path="$HOME/.local/share/nvim"
+read -rp "Remove nvim bundle at: $bundle_path? (y/N)" ans
+if [[ "${ans}" == [yY]  ]]; then
+    # Update the lazy repo in the lazy.lua file
+    command="rm -rf ${bundle_path}/*"
+    print_exec_command "$command"
+fi
+}
+
 remove_venv()
 {
 if [ -d "${venv_path}" ]; then
@@ -186,6 +197,7 @@ for opt in "$@"; do
             exit 0
             ;;
         -u|--uninstall)
+            remove_nvim_bundle
             unstowit "nvim"
             remove_nvim_alias
             remove_venv
