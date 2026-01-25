@@ -1,3 +1,6 @@
 #!/bin/bash
 
 # This glue shell is only needed when you want to run Qtile within a virtualenv
+
+source /home/jlburky/Git/linux-config/venvs/qtile-venv/bin/activate
+python /home/jlburky/Git/linux-config/venvs/qtile-venv/bin/qtile $*

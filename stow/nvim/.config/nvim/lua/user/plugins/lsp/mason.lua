@@ -28,7 +28,8 @@ return {
       ensure_installed = {
         "bashls",
         "lua_ls",
-        "pylsp",
+        --"pylsp",
+        "pyright",
         "clangd",
       },
     })
